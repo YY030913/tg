@@ -1,0 +1,15 @@
+<template name="debateType">
+	<div id="debateType" class="modal bottom-sheet">
+		<div class="modal-content">
+			<h4>{{_ "Select_Debate_Type"}}</h4>
+			<ul class="collection">
+				{{#each items}}
+					<li class="collection-item">
+						<input name="debateType" data-name="{{name}}" type="radio" id="{{name}}" />
+						<label for="{{name}}" style="width: 100%;">{{_ name}}</label>
+					</li>
+				{{/each}}
+			</ul>
+		</div>
+	</div>
+</template>

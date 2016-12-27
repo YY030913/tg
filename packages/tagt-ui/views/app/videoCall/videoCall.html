@@ -1,0 +1,111 @@
+<template name="videoCall">
+	{{#if videoAvaliable}}
+		{{#if videoActive}}
+			<div class="webrtc-video {{#if overlay}}webrtc-video-overlay{{/if}}">
+				<div class="main-video">
+					<video src="{{mainVideoUrl}}" autoplay muted="true" class="{{#if $eq mainVideoUrl selfVideoUrl}}video-flip{{/if}}"></video>
+					<div>{{mainVideoUsername}}</div>
+				</div>
+
+
+				<div class="videos left">
+					<div class="lock-left">
+						{{#if leftLocked}}
+							<i class="icon-lock-open" data-direction="left"></i>
+						{{else}}
+							<i class="icon-lock" data-direction="left"></i>
+						{{/if}}
+					</div>
+					<div class="content">
+						<div class="join-left">
+							{{#if notJoinedLeft}}
+								<button class="button">
+									<i class="mdi-action-exit-to-app" data-direction="left"></i>
+									{{_ "join"}}
+								</button>
+							{{/if}}
+						</div>
+
+						<div class="touch-slider swiper-item-container">
+							<ul class="touch-slider swiper-wrapper">
+								{{#each remoteVideoItemsLeft}}
+
+									<li class="touch-slider swiper-slide">
+										<div class="video-item {{#unless connected}}state-overlay{{/unless}}" data-state-text="{{stateText}}" data-username="{{id}}">
+											<video src="{{url}}" autoplay></video>
+												
+											<div>{{usernameByUserId id}}</div>
+										</div>
+									</li>
+								{{/each}}
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="videos right">
+					<div class="lock-right">
+						{{#if rightLocked}}
+							<i class="icon-lock-open" data-direction="right"></i>
+						{{else}}
+							<i class="icon-lock" data-direction="right"></i>
+						{{/if}}
+					</div>
+					<div class="content">
+						<div class="touch-slider swiper-item-container">
+							<ul class="touch-slider swiper-wrapper">
+								{{#each remoteVideoItemsRight}}
+
+									<li class="touch-slider swiper-slide">
+										<div class="video-item {{#unless connected}}state-overlay{{/unless}}" data-state-text="{{stateText}}" data-username="{{id}}">
+											<video src="{{url}}" autoplay></video>
+												
+											<div>{{usernameByUserId id}}</div>
+										</div>
+									</li>
+								{{/each}}
+							</ul>
+						</div>
+						<div class="join-right">
+							{{#if notJoinedRight}}
+								<button class="button">
+									<i class="mdi-action-exit-to-app" data-direction="right"></i>
+									{{_ "join"}}
+								</button>
+							{{/if}}
+						</div>
+					</div>
+				</div>
+					
+
+				<div class="buttons-group">
+					{{#if videoActive}}
+						<button class="stop-call button red"><i class="icon-stop"></i>{{_ "Stop"}}</button>
+						{{#if audioEnabled}}
+							<button class="disable-audio button red" title="{{_ 'Mute'}}" aria-label="{{_ 'Mute'}}"><i class="icon-mute"></i></button>
+						{{else}}
+							<button class="enable-audio button" title="{{_ 'Unmute'}}" aria-label="{{_ 'Unmute'}}"><i class="icon-mic"></i></button>
+						{{/if}}
+						{{#if videoEnabled}}
+							<button class="disable-video button red"><i class="icon-eye-off"></i></button>
+						{{else}}
+							<button class="enable-video button"><i class="icon-eye"></i></button>
+						{{/if}}
+						{{#if screenShareAvailable}}
+							{{#if screenShareEnabled}}
+								<button class="disable-screen-share button red"><i class="icon-desktop"></i></button>
+							{{else}}
+								<button class="enable-screen-share button"><i class="icon-desktop"></i></button>
+							{{/if}}
+						{{/if}}
+						{{#if overlayEnabled}}
+							<button class="disable-overlay button red"><i class="icon-resize-small"></i></button>
+						{{else}}
+							<button class="enable-overlay button"><i class="icon-resize-full-alt"></i></button>
+						{{/if}}
+					{{/if}}
+				</div>
+			</div>
+		{{/if}}
+	{{/if}}
+</template>

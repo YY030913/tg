@@ -1,0 +1,101 @@
+<template name="score">
+	<section class="page-container page-list">
+		<header class="fixed-title">
+			<div class="header-container">
+			<!-- <header id="header" class="page-topbar"> -->
+				{{> burger}}
+				<div class="pagetitle">
+					<h2>
+						<span class="room-title">{{_ pageTitle}}</span>
+					</h2>
+				</div>
+				
+			</div>
+		</header>
+		<div class="container">
+			<div class="contained points-container">
+				<div>
+					<div class="total-points-container expanded">
+						<div class="total-points">
+							<h1>{{sumScore}}</h1>
+							<p>{{_ 'Score_Num'}}</p>
+						</div>
+					</div>
+				</div>
+				<div class="points-breakdown">
+					<ul>
+						<li>
+							<div class="topic-stat">
+								<span class="has-topic-background-color add-css-background-color">•</span>
+								<h3>{{LoginScore}}</h3>
+								<p class="topic-stat-name">{{_ "Login"}}</p>
+							</div>
+						</li>
+						<li>
+							<div class="topic-stat">
+								<span class="has-topic-background-color has-topic-background-color add-html-background-color">•</span>
+								<h3>{{debateScore}}</h3>
+								<p class="topic-stat-name">{{_ "Debate"}}</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+  			<div class="secondary-heading">
+    			<h2>{{_ 'Score'}}</h2>
+  			</div>
+			<ul class="content-block-list">
+				<li>
+					<div class="content-block">
+						<div class="content-meta">
+							<h3>{{_ 'Register'}}</h3>
+							<p>{{_ "Join_Our_Party"}}</p>
+							<div class="content-actions-container">
+								<span class="icon icon-complete"></span>
+								<p>{{registerDate}}</p>
+							</div>
+						</div>
+						<div class="achievement-hero">
+							<img alt="Customizing WordPress Themes" src="./images/score/register.png">
+						</div>
+					</div>
+				</li>
+				{{#if firstSpeakDate}}
+					<li>
+						<div class="content-block">
+							<div class="content-meta">
+								<h3>{{_ 'First_Speak'}}</h3>
+								<p>{{_ "First_Speak_To_Debate"}}</p>
+								<div class="content-actions-container">
+									<span class="icon icon-complete"></span>
+									<p>{{firstSpeakDate}}</p>
+								</div>
+							</div>
+							<div class="achievement-hero">
+								<img alt="Customizing WordPress Themes" src="./images/score/firstspeak.png">
+							</div>
+						</div>
+					</li>
+				{{/if}}
+				{{#if hundredSpeakDate}}
+					<li>
+						<div class="content-block">
+							<div class="content-meta">
+								<h3>{{_ 'Hundred_Speak'}}</h3>
+								<p>{{_ "Hundred_Speak_To_Debate"}}</p>
+								<div class="content-actions-container">
+									<span class="icon icon-complete"></span>
+									<p>{{hundredSpeakDate}}</p>
+								</div>
+							</div>
+							<div class="achievement-hero">
+								<img alt="Customizing WordPress Themes" src="./images/score/hundredspeak.png">
+							</div>
+						</div>
+					</li>
+				{{/if}}
+
+			</ul>
+		</div>
+	</section>
+</template>

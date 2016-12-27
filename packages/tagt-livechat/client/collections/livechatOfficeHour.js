@@ -1,0 +1,1 @@
+this.LivechatOfficeHour = new Mongo.Collection('tagt_livechat_office_hour');

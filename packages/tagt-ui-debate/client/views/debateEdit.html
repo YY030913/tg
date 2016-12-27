@@ -1,0 +1,48 @@
+<template name="debateEdit">
+	<section class="page-container">
+		
+		<header class="fixed-title">
+			<div class="header-container">
+				{{> burger}}
+				<div class="pagetitle">
+					<h2>
+						<span class="room-title">{{pagetitle}}</span>
+					</h2>
+				</div>
+				<ul class="header-options">
+					<li>
+						<a href="javascript:void(0);" class="icon-ok-a waves-effect waves-block waves-light">
+							<i class="mdi-action-done"></i>
+						</a>
+					</li>
+					{{#if cordova}}
+						<li>
+							<a href="javascript:void(0);" class="add-img waves-effect waves-block waves-light">
+								<i class="icon-wangEditor-m-picture"></i>
+								<input type="file" accept="{{fileUploadAllowedMediaTypes}}">
+							</a>
+						</li>
+					{{/if}}
+				</ul>
+			</div>
+		</header>
+		<div class="container {{#if invalidEdit}}room-not-found{{/if}}" style="overflow-y: scroll;">
+			<div class="debate-edit-wrapper">
+				{{#if invalidEdit}}
+					<i class="icon-attention"></i>
+					{{{_ 'error-not-authorized'}}}
+					
+				{{else}}
+					<input class="debate-name {{#if mobile}}mobile-debate-name{{/if}}" name="name" value="{{name}}" />
+					<div id="edit-content" class="edit-content">
+						{{#if isSubscribed}}
+							
+						{{else}} 
+							{{> loading}} 
+						{{/if}}
+					</div>
+				{{/if}}
+			</div>
+		</div>
+	</section>
+</template>

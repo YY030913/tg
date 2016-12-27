@@ -1,0 +1,79 @@
+<template name="debateItem">
+
+    {{#if onePic}}
+    <div class="debate-item">
+        <div style="vertical-align: middle;display: inline-block;width: calc(100% - 129px);">
+            <h2>
+                <a href="{{pathFor 'debate' slug=_id}}">{{name}}</a>
+            </h2> 
+            <div class="debate-item-content"> 
+                <div class="avatar">
+                    {{> avatar username=username}}
+                </div>
+                 <a href="{{pathFor 'user-profile' slug=userid}}">
+                    <bdo>
+                        {{username}}<i class="icon_best_pocoer"></i>
+                    </bdo>
+                    <i>{{createtime}}</i>
+                </a>
+            </div>
+        </div>
+        <a target="_blank">
+            <div style="display: inline-block;vertical-align: middle;width: 119px;height: 119px;padding-right: 10px;background-size: 100% 100%;background-image: url({{fixCordova imgs}})">
+            </div>
+        </a>
+    </div>
+    {{/if}}
+    {{#if morePic}}
+    <div class="debate-item">
+        <h2>
+            <a href="{{pathFor 'debate' slug=_id}}">
+                {{name}}
+            </a>
+        </h2>
+        <div class="debate-item-content"> 
+            <div class="avatar">
+                {{> avatar username=username}}
+            </div>
+            <a href="{{pathFor 'user-profile' slug=userid}}">
+                <bdo>
+                    {{username}}<i class="icon_best_pocoer"></i>
+                </bdo>
+                <i>{{createtime}}</i>
+            </a>
+        </div>
+        <div class="touch-slider swiper-item-container">
+            <ul class="touch-slider swiper-wrapper">
+                {{#each imgs}}
+                <li class="touch-slider swiper-slide item-img">
+                    <a href="{{fixCordova .}}" target="_blank" style="width: 100%;">
+                        <div style="min-width: 93px;min-height: 93px;background-image: url({{.}});background-size: 100% 100%;" class="touch-slider" >
+                        </div>
+                    </a>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    {{/if}}
+    {{#if noPic}}
+    <div class="debate-item">
+        <h2>
+            <a href="{{pathFor 'debate' slug=_id}}">{{name}}
+            </a>
+        </h2>
+        <div class="debate-item-content"> 
+            <div class="avatar">
+                {{> avatar username=username}}
+            </div>
+            <a href="{{pathFor 'user-profile' slug=userid}}">
+                <bdo>
+                    {{username}}<i class="icon_best_pocoer"></i>
+                </bdo>
+                <i>{{createtime}}</i>
+            </a>
+        </div>
+    </div>
+    {{/if}}
+
+</template>

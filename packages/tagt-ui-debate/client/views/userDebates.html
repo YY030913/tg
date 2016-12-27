@@ -1,0 +1,35 @@
+<template name="userDebates">
+	<section class="page-container page-list">
+
+		<header class="fixed-title">
+			<div class="header-container">
+				{{> burger}}
+				<div class="pagetitle">
+					<h2>
+						<span class="room-title">{{_ pageTitle}}</span>
+					</h2>
+				</div>
+				<ul class="header-options">
+					<li><a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen"><i class="mdi-action-settings-overscan"></i></a>
+					</li>
+				</ul>
+			</div>
+			
+		</header>
+
+		<div class="container">
+			<div class="posts-list">
+				{{#each debatesHistory}} 
+					{{#nrr nrrargs 'debateItem' .}}{{/nrr}} 
+				{{else}}
+					<p style="text-align:center;">{{_ 'Nothing'}}</p>
+				{{/each}}
+			</div>
+		</div>
+	</section>
+	<div class="fbtn-container">
+		<div class="fbtn-inner">
+			<a class="fbtn-lg"><i class="icon-plus" aria-hidden="true"></i></a>
+		</div>
+	</div>
+</template>

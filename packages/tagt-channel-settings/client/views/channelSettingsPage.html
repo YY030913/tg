@@ -1,0 +1,77 @@
+<template name="channelSettingsPage">
+	<section class="page-container page-home page-static">
+		<header class="fixed-title">
+			<div class="header-container">
+				{{> burger}}
+				<div class="pagetitle">
+					<h2>
+						<span class="room-title">{{_ "Room_Info"}}</span>
+					</h2>
+				</div>
+			</div>
+		</header>
+		<div class="container">
+			<div class="list-view channel-settings">
+				<form>
+					<ul class="list clearfix">
+						{{#if notDirect}}
+							<li>
+								<label>{{_ "Name"}}</label>
+								<div>
+									{{#if editing 'roomName'}}
+										<input type="text" name="roomName" value="{{roomName}}" class="editing" /> <button type="button" class="button waves-effect waves-light secondary cancel">{{_ "Cancel"}}</button> <button type="button" class="button waves-effect waves-light primary save">{{_ "Save"}}</button>
+									{{else}}
+										<span>{{roomName}}{{#if canEdit}} <i class="icon-pencil" data-edit="roomName"></i>{{/if}}</span>
+									{{/if}}
+								</div>
+							</li>
+						{{/if}}
+						<li>
+							<label>{{_ "Topic"}}</label>
+							<div>
+								{{#if editing 'roomTopic'}}
+									<input type="text" name="roomTopic" value="{{roomTopic}}" class="editing" /> <button type="button" class="button waves-effect waves-light secondary cancel">{{_ "Cancel"}}</button> <button type="button" class="button waves-effect waves-light primary save">{{_ "Save"}}</button>
+								{{else}}
+									<span>{{{TAGTMarkdown roomTopic}}}{{#if canEdit}} <i class="icon-pencil" data-edit="roomTopic"></i>{{/if}}</span>
+								{{/if}}
+							</div>
+						</li>
+						{{#if notDirect}}
+							<li>
+								<label>{{_ "Type"}}</label>
+								<div>
+									{{#if editing 'roomType'}}
+										<label><input type="radio" name="roomType" id="roomType_0" class="editing" value="c" checked="{{$eq roomType 'c'}}" /> <label for="roomType_0"> {{_ "Channel"}} </label> </label>
+										<label><input type="radio" name="roomType" id="roomType_1" value="p" checked="{{$eq roomType 'p'}}" /> <label for="roomType_1"> {{_ "Private_Group"}} </label> </label>
+										<button type="button" class="button waves-effect waves-light secondary cancel">{{_ "Cancel"}}</button>
+										<button type="button" class="button waves-effect waves-light primary save">{{_ "Save"}}</button>
+									{{else}}
+										<span>{{roomTypeDescription}}{{#if canEdit}} <i class="icon-pencil" data-edit="roomType"></i>{{/if}}</span>
+									{{/if}}
+								</div>
+							</li>
+						{{/if}}
+						{{#if notDirect}}
+							<li>
+								<label>{{_ "Room_archivation_state"}}</label>
+								<div>
+									{{#if editing 'archivationState'}}
+										<label><input type="radio" name="archivationState" id="archivationState_0" class="editing" value="true" checked="{{$eq archivationState true}}" /> <label for="archivationState_0"> {{_ "Room_archivation_state_true"}} </label> </label>
+										<label><input type="radio" name="archivationState" id="archivationState_1" value="false" checked="{{$neq archivationState true}}" /> <label for="archivationState_1"> {{_ "Room_archivation_state_false"}} </label> </label>
+										<button type="button" class="button waves-effect waves-light secondary cancel">{{_ "Cancel"}}</button>
+										<button type="button" class="button waves-effect waves-light primary save">{{_ "Save"}}</button>
+									{{else}}
+										<span>{{archivationStateDescription}}{{#if canArchiveOrUnarchive}} <i class="icon-pencil" data-edit="archivationState"></i>{{/if}}</span>
+									{{/if}}
+								</div>
+							</li>
+						{{/if}}
+						{{#each channelSettings}}
+							{{> Template.dynamic template=template data=data}}
+						{{/each}}
+					</ul>
+				</form>
+			</div>
+		</div>
+	</section>
+</template>

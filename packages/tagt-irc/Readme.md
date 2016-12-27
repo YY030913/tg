@@ -1,0 +1,1 @@
+Move to [tagt-irc](https://github.com/haosdent/TalkGet/tree/irc/packages/tagt-irc).

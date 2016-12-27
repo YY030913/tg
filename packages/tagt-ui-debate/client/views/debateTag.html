@@ -1,0 +1,48 @@
+<template name="debateTag">
+	<section class="page-container page-list">
+
+		<header class="fixed-title">
+			<div class="header-container">
+				{{> burger}}
+				<div class="pagetitle">
+					<h2>
+						<span class="room-title">{{_ pageTitle}}</span>
+					</h2>
+				</div>
+			</div>
+		</header>
+
+		<div class="container tag-box tag-wrapper">
+
+			{{#unless hasPermission 'access-debate-tag'}}
+				<p>{{_ "You_are_not_authorized_to_view_this_page"}}</p>
+			{{else}}
+				<button class="new-message not">
+					<i class="icon-down-big"></i>
+					{{_ "New_messages"}}
+				</button>
+				<div class="wrapper">
+					{{#each debatesHistory}} 
+						{{#nrr nrrargs 'debateItem' .}}{{/nrr}} 
+					{{/each}}
+					{{#if hasMore}}
+						<li class="load-more">
+							{{#if isLoading}}
+								<div class="load-more-loading">{{_ "Loading_more_from_history"}}...</div>
+							{{else}}
+								<button>{{_ "Has_more"}}...</button>
+							{{/if}}
+						</li>
+					{{else}}
+						<p style="text-align:center;">{{_ 'Nothing'}}</p>
+					{{/if}}
+				</div>
+			{{/unless}}
+		</div>
+	</section>
+	<div class="fbtn-container">
+		<div class="fbtn-inner">
+			<a class="fbtn-lg"><i class="icon-plus" aria-hidden="true"></i></a>
+		</div>
+	</div>
+</template>

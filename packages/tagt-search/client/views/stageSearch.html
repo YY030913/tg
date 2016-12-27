@@ -1,0 +1,75 @@
+<template name="stageSearch">
+	<section class="page-container page-home page-static" id="debateContainer">
+		<header class="fixed-title cd-auto-hide-header">
+			<div class="header-container">
+				{{> burger}}
+				<div class="pagetitle">
+					<h2>
+						<span class="room-title">{{_ "Search"}}</span>
+					</h2>
+				</div>
+				
+			</div>
+		</header>
+		
+		<div class="container">
+			<article class="search-wrapper">
+				<header class="nav layout-box">
+					<a href="javascript:;" data-type="debate" class="item box-col active">{{_ "Debate"}}</a>
+					<a href="javascript:;" data-type="users" class="item box-col">{{_ "Users"}}</a>
+					
+				</header>
+				<form action="/searchs/result" class="search-box layout-box">
+				<input type="hidden" name="type" value="debate">
+				<div class="input-wrapper box-col">
+					<span class="fl type iconf iconf_navbar_search" data-act-type="hover"></span>
+					<span class="fr clear hid" node-type="clear"></span>
+					<div class="input-box">
+						<input name="queryVal" class="search forSearch" type="text" placeholder="搜索" id="queryVal">
+					</div>
+					<i class="bili-icon-circle-del close-icon" style="display: inline;"></i>
+				</div>
+				<span node-type="btn" class="btn-txt isCancel">取消</span>
+				</form>
+			</article>
+		
+			<div class="search-wrapper" style="display: block;">
+				<div class="hot-wrapper">
+					<div class="title">
+						<span class="line"></span>
+							<span class="name">{{_ "Hot_Search"}}</span>
+						<span class="line"></span>
+					</div>
+					<div class="hot-content clearfix">
+						{{#if histroyReady}}
+							{{#each hotSearch}}
+							<a class="hot-item">{{name}}</a>
+							{{/each}}
+						{{else}}
+							loading
+						{{/if}}
+					</div>
+				</div>
+				<div class="history-wrapper">
+					<div class="title">
+						<span class="line"></span>
+						<span class="name">{{_ "Search_History"}}</span>
+						<span class="line"></span>
+					</div>
+					<div class="history-content">
+						{{#if histroyReady}}
+							{{#each histroySearch}}
+							<a class="history-item" href="http://bilibili.com/mobile/search.html?keyword=%E7%81%AB%E6%98%9F">
+								<i class="bili-icon-history"></i>
+								<span class="keyword">{{name}}</span>
+								<i class="bili-icon-del history-clear"></i>
+							</a>
+							{{/each}}
+						{{/if}}
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+</template>

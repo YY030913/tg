@@ -1,0 +1,49 @@
+<template name="accountBox">
+	<div class="account-box" aria-label="{{_ "Account"}}" role="region">
+		{{#with myUserInfo}}
+			<div class="info status-{{status}}">
+				{{#if username}}
+					<div class="thumb" data-status='{{visualStatus}}'>
+						{{> avatar username=username}}
+					</div>
+					<div class="data" id="account">
+						<h4>{{username}}</h4>
+					</div>
+					<div class="img-thumbnail flag flag-icon-background flag-icon-{{shortCountry}}"></div>
+					<ul class="medals">
+						{{#each medals}}
+							<li>
+								<div class="medal" style="background: url(/images/medals/{{name}}.png) no-repeat; 
+								width: 28px;
+					height: 32px;
+					background-position-y: center;
+					background-position-x: center;
+					-webkit-background-size: 100% 100%;
+					background-size: 100% 100%;
+					-moz-background-size: 100% 100%;
+					line-height: 32px;
+					-o-background-size: 100% 100%;"></div>
+							</li>
+						{{/each}}
+					</ul>
+				{{/if}}
+			</div>
+			<nav class="options animated-hidden">
+				<div class="wrapper">
+					<button data-status="online" class="status online waves-effect waves-light "><span>{{_ "Online"}}</span></button>
+					<button data-status="away" class="status away waves-effect waves-light "><span>{{_ "Away" context="male"}}</span></button>
+					<button data-status="busy" class="status busy waves-effect waves-light "><span>{{_ "Busy" context="male"}}</span></button>
+					<button data-status="offline" class="status offline waves-effect waves-light "><span>{{_ "Invisible"}}</span></button>
+					<button id="account" class='account-link waves-effect waves-light '><i class="icon-sliders"></i><span>{{_ "My_Account"}}</span></button>
+					{{#each registeredMenus}}
+						<a href="{{pathFor href}}" class="account-box-item"><i class="{{icon}}"></i><span>{{name}}</span></a>
+					{{/each}}
+					{{#if showAdminOption }}
+						<button id="admin" class='account-link waves-effect waves-light '><i class="icon-wrench"></i><span>{{_ "Administration"}}</span></button>
+					{{/if}}
+					<button id="logout" class="waves-effect waves-light "><i class="icon-logout"></i><span>{{_ "Logout"}}</span></button>
+				</div>
+			</nav>
+		{{/with}}
+	</div>
+</template>

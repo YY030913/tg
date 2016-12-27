@@ -1,0 +1,115 @@
+<template name="accountSetting">
+	<section class="page-container page-home page-static">
+		<header class="fixed-title">
+			<div class="header-container">
+				{{> burger}}
+				<div class="pagetitle">
+					<h2>
+						<span class="room-title">{{_ "Settings"}}</span>
+					</h2>
+				</div>
+			</div>
+		</header>
+		<div class="container">
+			<div class="dataCont">
+				<div class="card11 card-combine">
+					<div data-node="cardList" class="card-list">
+						{{#with myUserInfo}}
+							<div class="card30 line-around" data-node="card" data-act-type="hover">
+								{{#if username}}
+									<div class="layout-box media-graphic">
+										<div class="mod-media size-s">
+											{{> avatar username=username}}
+										</div>
+										<div class="box-col item-list">
+											<div class="item-main txt-s mct-a txt-cut" data-node="cNameUsr">
+												<span>
+													{{username}}
+												</span>
+												
+												<a data-node="cIconLink" href="javascript:;" data-act-type="hover" class="btn-nvip">
+													{{#each medals}}
+														<li style=" margin-right:5px; width: 35px; height: 40px; display: inline-block;">
+															<img src="./images/medals/{{name}}.png" style=" width: 100%; height: 100%;">
+														</li>
+													{{/each}}
+												</a>
+											</div>
+											
+											<div class="item-minor txt-s mct-d" data-node="cTxtUsr">{{_ "Introduction"}} {{introduction}}</div>
+											
+										</div>
+									</div>
+								{{/if}}
+							</div>
+						{{/with}}
+						<div class="card2 line-around">
+							<div class="layout-box">
+								<a class="box-col line-separate waves-effect waves-cyan" href="" data-act-type="hover">
+									<div class="mct-a txt-s">{{debateCount}}</div>
+									<div class="mct-a txt-s txt-bottom">{{_ "Joined_Debate"}}</div>
+								</a>
+								<a class="box-col line-separate waves-effect waves-cyan" href="" data-act-type="hover">
+									<div class="mct-a txt-s">{{followCount}}</div>
+									<div class="mct-a txt-s txt-bottom">{{_ "Follow"}}</div>
+								</a>
+								<a class="box-col line-separate waves-effect waves-cyan" href="" data-act-type="hover">
+									<div class="mct-a txt-s">{{followingCount}}</div>
+									<div class="mct-a txt-s txt-bottom">{{_ "Following"}}</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="card11 card-combine" data-node="group">
+					<div data-node="cardList" class="card-list">
+						{{#if allowUserProfileChange}}
+							<div class="card4 line-around">
+								<a href="{{pathFor 'account' group='profile'}}" class="waves-effect waves-cyan layout-box" data-act-type="hover"><i class="iconimg iconimg-s">
+									</i>
+									<div class="box-col txt-cut">
+										<span class="mct-a ">{{_ "Profile"}}</span>
+										<span class="mct-b txt-xs"></span>
+									</div> 
+								</a>
+							</div>
+						{{/if}}
+					</div>
+				</div>
+
+				<div class="card11 card-combine" data-node="group">
+					<div data-node="cardList" class="card-list">
+						{{#if allowUserAvatarChange}}
+							<div class="card4 line-around">
+								<a href="{{pathFor 'changeAvatar'}}" class="waves-effect waves-cyan layout-box" data-act-type="hover">
+									<i class="iconimg iconimg-s">
+									</i>
+									<div class="box-col txt-cut">
+										<span class="mct-a ">{{_ "Avatar"}}</span>
+										<span class="mct-b txt-xs"></span>
+									</div> 
+								</a>
+							</div>
+						{{/if}}
+					</div>
+				</div>
+
+				<div class="card11 card-combine" data-node="group">
+					<div data-node="cardList" class="card-list">
+						<div class="card4 line-around">
+							<a href="{{pathFor 'account' group='preferences'}}" class=" waves-effect waves-cyan layout-box" data-act-type="hover">
+								<i class="iconimg iconimg-s">
+									
+								</i>
+								<div class="box-col txt-cut">
+									<span class="mct-a ">{{_ "Preferences"}}</span>
+								</div> 
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</template>

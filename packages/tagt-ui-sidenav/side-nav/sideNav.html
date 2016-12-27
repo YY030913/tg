@@ -1,0 +1,131 @@
+<template name="sideNav">
+	<aside class="side-nav" role="navigation">
+		<header class="header">
+			{{> accountBox }}
+		</header>
+		{{#if currentUser}}
+			
+			<div class="rooms-list" aria-label="{{_ "Channels"}}" role="region">
+				<div class="wrapper">
+					<ul id="slide-out" class="li-hover">
+
+						<li class="no-padding">
+							<ul class="collapsible collapsible-accordion">
+								<li class="bold">
+									<a class="waves-effect waves-cyan side-menu" href="{{pathFor 'typeDebates' type='o'}}"> 
+										{{_ "Discory"}}
+									</a>
+									{{#if unreadDiscory}}
+										<span class="new badge">{{unreadDiscory}}</span>
+									{{/if}}
+								</li>
+							</ul>
+						</li>
+
+						{{#each privateTags}}
+							{{#if hasPermission (viewPrivatePermission name)}}
+								<li class="no-padding">
+									<ul class="collapsible collapsible-accordion">
+										<li class="bold">
+											<a class="waves-effect waves-cyan side-menu" href="{{debatePath}}">
+												{{_ name}}
+											</a>
+											{{#if unread _id}}
+												<span class="new badge">{{unread _id}}</span>
+											{{/if}}
+										</li>
+									</ul>
+								</li>
+							{{/if}}
+						{{/each}}
+
+						<li class="li-hover"><div class="divider"></div></li>
+
+						<li class="no-padding">
+							<ul class="collapsible collapsible-accordion">
+								<li class="bold">
+									<a class="waves-effect waves-cyan side-menu" href="{{pathFor "messages"}}">
+										{{_ "Message"}}
+									</a>
+								</li>
+							</ul>
+            					</li>
+
+            					<li class="li-hover"><div class="divider"></div></li>
+
+
+            					<li class="no-padding">
+							<ul class="collapsible collapsible-accordion">
+								<li class="bold">
+									<a class="waves-effect waves-cyan side-menu" href="{{pathFor "friend"}}">{{_ "Follow"}}
+									</a>
+								</li>
+							</ul>
+            					</li>
+
+            					<li class="no-padding">
+							<ul class="collapsible collapsible-accordion">
+								<li class="bold">
+									<a class="waves-effect waves-cyan side-menu" href="{{pathFor 'userFollowing' id=userId}}"> {{_ "Following"}}
+									</a>
+									{{#if hasNewFriend}}
+										<span class="new badge">{{newFriendCount}}</span>
+									{{/if}}
+								</li>
+							</ul>
+            					</li>
+
+            					<li class="li-hover"><div class="divider"></div></li>
+
+            					{{#each registeredMenus}}
+            						<li class="no-padding">
+								<ul class="collapsible collapsible-accordion">
+									<li class="bold">
+										<a class="waves-effect waves-cyan side-menu" href="{{pathFor href}}">
+											{{_ name}}
+										</a>
+									</li>
+								</ul>
+							</li>
+						{{/each}}
+
+						<li class="li-hover"><div class="divider"></div></li>
+
+						{{#if showAdminOption }}
+							<li class="no-padding" id="admin">
+								<ul class="collapsible collapsible-accordion">
+									<li class="bold">
+										<a class="waves-effect waves-cyan side-menu">
+											{{_ "Administration"}}
+										</a>
+									</li>
+								</ul>
+							</li>
+						{{/if}}
+
+						<li class="li-hover"><div class="divider"></div></li>
+						
+						<li class="no-padding" id="logout">
+							<ul class="collapsible collapsible-accordion">
+								<li class="bold">
+									<a class="waves-effect waves-cyan side-menu">
+										{{_ "Logout"}}
+									</a>
+								</li>
+							</ul>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+			<div class="flex-nav animated-hidden">
+				<section>
+					{{> Template.dynamic template=flexTemplate data=flexData}}
+				</section>
+			</div>
+		{{/if}}
+		<footer class="footer">
+			{{{footer}}}
+		</footer>
+	</aside>
+</template>

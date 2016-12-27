@@ -1,0 +1,91 @@
+<template name="userProfile">
+	<section class="page-container page-home page-static">
+		<header class="fixed-title">
+			<div class="header-container">
+				{{> burger}}
+				<div class="pagetitle">
+					<h2>
+						<span class="room-title">{{_ pageTitle}}</span>
+					</h2>
+				</div>
+			</div>
+		</header>
+		<div class="container" style="overflow-y: scroll;">
+			<div class="section profile-page">
+				<div class="profile-page-header ">
+					<div class="card">
+						<div class="firstinfo">
+							<div class="profile-page-avatar">
+								{{> avatar username=username}}
+							</div>
+							<div class="profileinfo">
+								<h1>{{username}}</h1>
+								<h3><i class="icon-location icon"></i><div class="profile-flag flag flag-icon-background flag-icon-{{shortCountry}}"></div>{{country}}</h3>
+								<p class="bio">{{introduction}}</p>
+							</div>
+							<div class="profile-page-follow">
+								{{#if notcurrentuser}}
+									{{#if followed}}
+										<a class="btn-xs btn-info m-t-xs unfollow">{{_ "Cancel_Follow"}}</a>
+									{{else}}
+										<a class="btn-xs btn-info m-t-xs follow">{{_ "Follow"}}</a>
+									{{/if}}
+								{{/if}}
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="profile-page-content">
+					<div class="row">
+						<div class="col s12">
+							<ul class="tabs z-depth-1">
+								<li class="tab col s3">
+									<a class="white-text waves-effect waves-light" href="#sapien">
+										<div>
+											{{followerscount}}
+										</div>
+										<div>
+											{{_ "Followers"}}
+										</div>
+									</a>
+								</li>
+								<li class="tab col s3">
+									<a class="white-text waves-effect waves-light active" href="#activeone">
+										<div>
+											{{followingcount}}
+										</div>
+										<div>
+											{{_ "Following"}}
+										</div>
+									</a>
+								</li>
+								<li class="tab col s3">
+									<a class="white-text waves-effect waves-light" href="#vestibulum">
+										<div>
+											{{debateCount}}
+										</div>
+										<div>
+											{{_ "Joined_Debate"}}
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="row">
+						<div id="sapien" class="col s12">
+							{{> followerList userId=userId}}
+						</div>
+						<div id="activeone" class="col s12">
+							{{> followingList userId=userId}}
+						</div>
+						<div id="vestibulum" class="col s12">
+							{{> userDebateTag userId=userId}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</template>

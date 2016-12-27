@@ -1,0 +1,23 @@
+<template name="debateFlex">
+	<header>
+		<div>
+			<h4>{{_ "My_Account"}}</h4>
+		</div>
+	</header>
+	<div class="content">
+		<div class="wrapper">
+			<ul>
+				<li>
+					<a href="{{pathFor 'debate' group='preferences'}}" class="debate-link">{{_ "Preferences"}}</a>
+					{{#if allowUserProfileChange}}
+						<a href="{{pathFor 'debate' group='profile'}}" class="debate-link">{{_ "Profile"}}</a>
+					{{/if}}
+					{{#if allowUserAvatarChange}}
+						<a href="{{pathFor 'changeAvatar'}}" class="debate-link">{{_ "Avatar"}}</a>
+					{{/if}}
+					{{!-- move this to profile --}}
+				</li>
+			</ul>
+		</div>
+	</div>
+</template>

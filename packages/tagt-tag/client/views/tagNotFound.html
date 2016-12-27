@@ -1,0 +1,50 @@
+<template name="tagNotFound">
+	<section class="page-container page-list">
+		<header class="fixed-title">
+			<div class="header-container">
+			<!-- <header id="header" class="page-topbar"> -->
+				{{> burger}}
+				<div class="pagetitle">
+					<h2>
+						<span class="flag-title">{{_ "Flag_not_found"}}</span>
+					</h2>
+				</div>
+				
+				<ul class="right">
+	                <li>
+	                    <a href="javascript:void(0);" class="waves-effect waves-block waves-light dropdown-button" data-activates="navigation-dropdown"><i class="mdi-navigation-more-vert"></i></a>
+	                </li>
+	            </ul>
+	            <!-- navigation-button -->
+	            <ul id="navigation-dropdown" class="dropdown-content">
+	            	{{#each buttons}}
+						<li>
+							<a href="{{route}}" title="{{title}}">
+								<i class="{{icon}}" aria-label="{{title}}"></i>
+								<span>
+									{{title}}
+								</span>
+							</a>
+						</li>
+					{{/each}}
+	            </ul>
+			</div>
+		</header>
+		<div class="content flag-not-found">
+			<i class="icon-attention"></i>
+			<div>
+				{{#with data}}
+					{{#if $eq type 'c'}}
+						{{{_ 'No_channel_with_name_%s_was_found' name}}}
+					{{/if}}
+					{{#if $eq type 'p'}}
+						{{{_ 'No_group_with_name_%s_was_found' name}}}
+					{{/if}}
+					{{#if $eq type 'd'}}
+						{{{_ 'No_user_with_username_%s_was_found' name}}}
+					{{/if}}
+				{{/with}}
+			</div>
+		</div>
+	</section>
+</template>

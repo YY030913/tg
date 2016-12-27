@@ -1,0 +1,49 @@
+<template name="following">
+	<section class="page-container page-home page-static">
+		<header class="fixed-title">
+			<div class="header-container">
+				{{> burger}}
+				<div class="pagetitle">
+					<h2>
+						<span class="flag-title">{{_ "Following"}}</span>
+					</h2>
+				</div>
+				
+			</div>
+		</header>
+		<div class="container">
+			{{#if isSubsc}}
+				{{> followingList userId=userId}}
+			{{/if}}
+			<!-- <ul id="a-z">
+				<a href="#A"><li>A</li></a>
+				<a href="#B"><li>B</li></a>
+				<a href="#C"><li>C</li></a>
+				<a href="#D"><li>D</li></a>
+				<a href="#E"><li>E</li></a>
+				<a href="#F"><li>F</li></a>
+				<a href="#G"><li>G</li></a>
+				<a href="#H"><li>H</li></a>
+				<a href="#I"><li>I</li></a>
+				<a href="#J"><li>J</li></a>
+				<a href="#K"><li>K</li></a>
+				<a href="#L"><li>L</li></a>
+				<a href="#M"><li>M</li></a>
+				<a href="#N"><li>N</li></a>
+				<a href="#O"><li>O</li></a>
+				<a href="#P"><li>P</li></a>
+				<a href="#Q"><li>Q</li></a>
+				<a href="#R"><li>R</li></a>
+				<a href="#S"><li>S</li></a>
+				<a href="#T"><li>T</li></a>
+				<a href="#U"><li>U</li></a>
+				<a href="#V"><li>V</li></a>
+				<a href="#W"><li>W</li></a>
+				<a href="#X"><li>X</li></a>
+				<a href="#Y"><li>Y</li></a>
+				<a href="#Z"><li>Z</li></a>
+				<a href="#bottomBar"><li>#</li></a>
+			</ul> -->
+		</div>
+	</section>
+</template>

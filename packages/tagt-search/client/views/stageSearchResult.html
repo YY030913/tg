@@ -1,0 +1,71 @@
+<template name="stageSearchResult">
+	<section class="page-container page-home page-static" id="debateContainer">
+		<header class="fixed-title cd-auto-hide-header"><!-- fixed-title  -->
+			<div class="header-container">
+			<!-- <header id="header" class="page-topbar"> -->
+				{{> burger}}
+				<div class="pagetitle">
+					<h2>
+						<span class="room-title">{{_ "Search"}}</span>
+					</h2>
+				</div>
+				
+			</div>
+		</header>
+		
+		<div class="container">
+		    <article class="search-wrapper">
+		        <header class="nav layout-box">
+		        	<a href="javascript:;" data-type="debate" class="item box-col active">{{_ "Debate"}}</a>
+		        	<a href="javascript:;" data-type="users" class="item box-col">{{_ "Users"}}</a>
+		        	
+		        </header>
+		        <form action="/searchs/result" class="search-box layout-box">
+		            <input type="hidden" name="type" value="wb">
+		            <div class="input-wrapper box-col">
+		            	<span class="fl type iconf iconf_navbar_search" data-act-type="hover"></span>
+		            	<span class="fr clear hid" node-type="clear"></span>
+		                <div class="input-box">
+		                    <input name="queryVal" class="search forSearch" type="text" placeholder="搜索" id="queryVal">
+		                </div>
+		                <i class="bili-icon-circle-del close-icon" style="display: inline;"></i>
+		            </div>
+		            <span node-type="btn" class="btn-txt isCancel">取消</span>
+		        </form>
+		    </article>
+		    <div node-type="J-result-list" class="J-result-list" style="display:none;"></div>
+		    
+		    <div class="wrapper" style="display: block;">
+		    	{{#if debateType}}
+				    {{#each debatesHistory}} 
+	                	{{#nrr nrrargs 'debateItem' .}}{{/nrr}} 
+	                {{/each}}
+				{{/if}}
+				{{#if userType}}
+					<ul class='list clearfix lines'>
+						{{#each users}}
+							<li class='user-image user-card-room status-{{status}}'>
+								<button data-username="{{username}}" tabindex="0" title="{{username}}" class="waves-effect waves-light ">
+									{{> avatar username=username}}
+									<p>{{username}} {{utcOffset}}</p>
+								</button>
+							</li>
+						{{/each}}
+					</ul>
+				{{/if}}
+				{{#if hasMore}}
+					<li class="load-more">
+						{{#if isLoading}}
+							<div class="load-more-loading">{{_ "Loading_more_from_history"}}...</div>
+						{{else}}
+							<button class="waves-effect waves-light ">{{_ "Has_more"}}...</button>
+						{{/if}}
+					</li>
+				{{else}}
+					<p style="text-align:center;">{{_ 'Nothing'}}</p>
+				{{/if}}
+			</div>
+
+		</div>
+	</section>
+</template>

@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+  	"cosmos:browserify": {
+  		"version": "0.9.3"
+  	},
+    "qiniu": {
+      "version": "6.1.9"
+    }
+  }
+}

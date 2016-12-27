@@ -1,0 +1,38 @@
+<template name="debateCateConfirm">
+	<section class="page-container page-home page-static">
+		<header class="fixed-title">
+			<div class="header-container">
+			<!-- <header id="header" class="page-topbar"> -->
+				{{> burger}}
+				<div class="pagetitle">
+					<h2>
+						<span class="room-title">{{_ "Debates"}}</span>
+					</h2>
+				</div>
+			</div>
+		</header>
+		<div class="container">
+			{{#if isSub}}
+				<p id="reward">悬赏</p>
+				<p id="debate">论点辩论</p>
+				<p id="fuck">没事喷</p>
+				<div class="confirm-content" data-id='reward'>
+					金额：<input type="text"/>
+					活动单位：<input type="radio"/> 单位<input type="radio"/> 个人
+					规则：<textarea></textarea>>
+				</div>
+				<div class="confirm-content" data-id='debate'>
+					活动单位：<input type="radio"/> 单位<input type="radio"/> 个人
+					规则：<textarea></textarea>>
+				</div>
+				<div class="confirm-content" data-id='fuck'>
+					规则：<textarea></textarea>>
+				</div>
+			{{else}}
+				{{> loading}}
+			{{/if}}
+		</div>
+
+		<!-- {{> favortie}} --><!-- float,popu -->
+	</section>
+</template>

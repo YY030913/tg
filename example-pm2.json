@@ -1,0 +1,63 @@
+{
+	"apps": [{
+		"name": "talk.get.0",
+		"max_memory_restart": "1024M",
+		"log_date_format": "YYYY-MM-DD HH:mm:ss SSS",
+		"script": "/var/www/talk.get/bundle/main.js",
+		"out_file": "/var/log/talk.get/app.log",
+		"error_file": "/var/log/talk.get/err.log",
+		"port": "8080",
+		"env": {
+			"MONGO_URL": "mongodb://localhost:27017/tagt",
+			"MONGO_OPLOG_URL": "mongodb://localhost:27017/local",
+			"ROOT_URL": "https://demo.talk.get",
+			"DDP_DEFAULT_CONNECTION_URL": "https://demo.talk.get",
+			"PORT": "8080"
+		}
+	}, {
+		"name": "talk.get.1",
+		"max_memory_restart": "1024M",
+		"log_date_format": "YYYY-MM-DD HH:mm:ss SSS",
+		"script": "/var/www/talk.get/bundle/main.js",
+		"out_file": "/var/log/talk.get/app.log",
+		"error_file": "/var/log/talk.get/err.log",
+		"port": "8081",
+		"env": {
+			"MONGO_URL": "mongodb://localhost:27017/tagt",
+			"MONGO_OPLOG_URL": "mongodb://localhost:27017/local",
+			"ROOT_URL": "https://demo.talk.get",
+			"DDP_DEFAULT_CONNECTION_URL": "https://demo.talk.get",
+			"PORT": "8081"
+		}
+	}, {
+		"name": "talk.get.2",
+		"max_memory_restart": "1024M",
+		"log_date_format": "YYYY-MM-DD HH:mm:ss SSS",
+		"script": "/var/www/talk.get/bundle/main.js",
+		"out_file": "/var/log/talk.get/app.log",
+		"error_file": "/var/log/talk.get/err.log",
+		"port": "8082",
+		"env": {
+			"MONGO_URL": "mongodb://localhost:27017/tagt",
+			"MONGO_OPLOG_URL": "mongodb://localhost:27017/local",
+			"ROOT_URL": "https://demo.talk.get",
+			"DDP_DEFAULT_CONNECTION_URL": "https://demo.talk.get",
+			"PORT": "8082"
+		}
+	}, {
+		"name": "talk.get.3",
+		"max_memory_restart": "1024M",
+		"log_date_format": "YYYY-MM-DD HH:mm:ss SSS",
+		"script": "/var/www/talk.get/bundle/main.js",
+		"out_file": "/var/log/talk.get/app.log",
+		"error_file": "/var/log/talk.get/err.log",
+		"port": "8083",
+		"env": {
+			"MONGO_URL": "mongodb://localhost:27017/tagt",
+			"MONGO_OPLOG_URL": "mongodb://localhost:27017/local",
+			"ROOT_URL": "https://demo.talk.get",
+			"DDP_DEFAULT_CONNECTION_URL": "https://demo.talk.get",
+			"PORT": "8083"
+		}
+	}]
+}

@@ -1,0 +1,97 @@
+<template name="activity">
+	<section class="page-container page-list">
+		<header class="fixed-title">
+			<div class="header-container">
+			<!-- <header id="header" class="page-topbar"> -->
+				{{> burger}}
+				<div class="pagetitle">
+					<h2>
+						<span class="room-title">{{_ pageTitle}}</span>
+					</h2>
+				</div>
+				
+			</div>
+		</header>
+		<div class="container">
+
+			<section id="cd-timeline" class="cd-container">
+				{{#each activities}}
+					<div class="cd-timeline-block">
+						<div class="cd-timeline-img cd-picture">
+							<!-- <img src="img/cd-icon-picture.svg" alt="Picture"> -->
+							<i class="icon mdi-editor-insert-emoticon"></i>
+						</div> <!-- cd-timeline-img -->
+
+						<div class="cd-timeline-content">
+							<h2>{{_ title}}</h2>
+							{{#if content}}
+								<p>{{content}}</p>
+
+							{{/if}}
+							{{#if href}}
+								<a href="{{href}}" class="cd-read-more">{{_ "Show_more"}}</a>
+							{{/if}}
+							<span class="cd-date">{{createTime}}</span>
+						</div> <!-- cd-timeline-content -->
+					</div> <!-- cd-timeline-block -->
+
+				{{/each}}
+			</section> <!-- cd-timeline -->
+			<!-- <section class="timeline">
+				<ul>
+					<li>
+						<div class="cbp_tmicon cbp_tmicon-phone"></div>
+						<time class="cbp_tmtime" datetime="2013-04-10 18:30">
+							<span>4/10/13</span>
+							<span>18:30</span>
+						</time>
+						<div class="content">
+							At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+							At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+						</div>
+					</li>
+					<li>
+						<div class="cbp_tmicon cbp_tmicon-phone"></div>
+						<time class="cbp_tmtime" datetime="2013-04-10 18:30">
+							<span>4/10/13</span>
+							<span>18:30</span>
+						</time>
+						<div class="content">
+							At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+						</div>
+					</li>
+					<li>
+						<div class="cbp_tmicon cbp_tmicon-phone"></div>
+						<time class="cbp_tmtime" datetime="2013-04-10 18:30">
+							<span>4/10/13</span>
+							<span>18:30</span>
+						</time>
+						<div class="content">
+							At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+						</div>
+					</li>
+					<li>
+						<div class="cbp_tmicon cbp_tmicon-phone"></div>
+						<time class="cbp_tmtime" datetime="2013-04-10 18:30">
+							<span>4/10/13</span>
+							<span>18:30</span>
+						</time>
+						<div class="content">
+							At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+						</div>
+					</li>
+					<li>
+						<div class="cbp_tmicon cbp_tmicon-phone"></div>
+						<time class="cbp_tmtime" datetime="2013-04-10 18:30">
+							<span>4/10/13</span>
+							<span>18:30</span>
+						</time>
+						<div class="content">
+							At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+						</div>
+					</li>
+				</ul>
+			</section> -->
+		</div>
+	</section>
+</template>

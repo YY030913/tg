@@ -1,0 +1,68 @@
+{
+  "name": "TalkGet",
+  "description": "The Ultimate Open Source WebChat Platform",
+  "version": "0.40.1",
+  "author": {
+    "name": "TalkGet",
+    "url": "https://caoliao.net.cn/"
+  },
+  "contributors": [
+    {
+      "name": "Aaron Ogle",
+      "email": "aaron.olge@talk.get"
+    },
+    {
+      "name": "Bradley Hilton",
+      "email": "bradley.hilton@talk.get"
+    },
+    {
+      "name": "Diego Sampaio",
+      "email": "diego.sampaio@talk.get"
+    },
+    {
+      "name": "Gabriel Engel",
+      "email": "gabriel.engel@talk.get"
+    },
+    {
+      "name": "Marcelo Schmidt",
+      "email": "marcelo.schmidt@talk.get"
+    },
+    {
+      "name": "Rodrigo Nascimento",
+      "email": "rodrigo.nascimento@talk.get"
+    },
+    {
+      "name": "Sing Li",
+      "email": "sing.li@talk.get"
+    }
+  ],
+  "keywords": [
+    "tagt",
+    "rocket",
+    "chat"
+  ],
+  "scripts": {
+    "start": "meteor run",
+    "lint": "eslint .",
+    "deploy": "npm run build && pm2 startOrRestart pm2.json",
+    "chimp-watch": "chimp --ddp=http://localhost:3000 --watch --mocha --path=tests",
+    "chimp-test": "chimp --mocha --path=tests --mochaSlow=0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TAGT/TalkGet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TAGT/TalkGet/issues",
+    "email": "support@talk.get"
+  },
+  "devDependencies": {
+    "chimp": "^0.40.7",
+    "eslint": "^3.1.1"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.20.0",
+    "bcrypt": "^0.8.7"
+  }
+}

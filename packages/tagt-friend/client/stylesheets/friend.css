@@ -1,0 +1,38 @@
+.friend {
+    height: 60px;
+    width: 100%;
+    padding: 15px 15px 0 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.friend>.follow {
+    float: right;
+}
+.friend>h5 {
+    display: inline-block;
+}
+.friend>.thumb {
+    display: inline-block;
+}
+#a-z {
+    position: fixed;
+    top: 80px;
+    right: 5px;
+    text-align: center;
+    background: #fff;
+    height: 80%;
+    font-size: 1em;
+}
+#a-z li {
+    height:3.5%;
+}
+#contactsList {
+    width: 100%;
+}
+#shade {
+    background: rgba(0, 0, 0, .5);
+}
+.gap {
+    font-size: 20px;
+    width: 100%;
+    text-indent: 20px;
+}

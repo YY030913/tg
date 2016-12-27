@@ -1,0 +1,214 @@
+.ui-mask {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.2);
+  z-index: 99999;
+}
+
+.com { color: #767e7e; }
+.lit { color: #195f91; }
+.pun, .opn, .clo { color: #767e7e; }
+.fun { color: #dc322f; }
+.str, .atv { color: #268bd2; }
+.kwd, .tag { color: #195f91; }
+.typ, .atn, .dec, .var { color: #CB4B16; }
+.pln { color: #767e7e; }
+.prettyprint {
+  background-color: #fefbf3;
+  padding: 15px 15px 15px 30px;
+  border: 1px solid rgba(0,0,0,.2);
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+          box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums {
+  margin: 0 0 0 40px;
+}
+/* IE indents via margin-left */
+ol.linenums li {
+  padding: 0 5px;
+  color: rgba(0,0,0,.15);
+  line-height: 20px;
+  -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+          border-radius: 2px;
+}
+/* Alternate shading for lines */
+li.L1, li.L3, li.L5, li.L7, li.L9 {  }
+
+/*
+$base03:    #002b36;
+$base02:    #073642;
+$base01:    #586e75;
+$base00:    #657b83;
+$base0:     #839496;
+$base1:     #767e7e;
+$base2:     #eee8d5;
+$base3:     #fdf6e3;
+$yellow:    #b58900;
+$orange:    #cb4b16;
+$red:       #dc322f;
+$magenta:   #d33682;
+$violet:    #6c71c4;
+$blue:      #268bd2;
+$cyan:      #2aa198;
+$green:     #859900;
+*/
+
+
+/*
+#1d1f21 Background
+#282a2e Current Line
+#373b41 Selection
+#c5c8c6 Foreground
+#969896 Comment
+#cc6666 Red
+#de935f Orange
+#f0c674 Yellow
+#b5bd68 Green
+#8abeb7 Aqua
+#81a2be Blue
+#b294bb Purple
+*/
+
+
+/* DARK THEME */
+/* ---------- */
+
+.prettyprint-dark {
+  background-color: #1d1f21;
+  border: 0;
+  padding: 10px;
+}
+.prettyprint-dark .linenums li {
+  color: #444;
+}
+.prettyprint-dark .linenums li:hover {
+  background-color: #282a2e;
+}
+/* tags in html */
+.prettyprint-dark .kwd,
+.prettyprint-dark .tag { color: #cc6666; }
+/* html attr */
+.prettyprint-dark .typ,
+.prettyprint-dark .atn,
+.prettyprint-dark .dec,
+.prettyprint-dark .var { color: #de935f; }
+/* html attr values */
+.prettyprint-dark .str,
+.prettyprint-dark .atv { color: #b5bd68; }
+
+
+.com { color: purple; }
+
+.ui-ios-overlay {
+  z-index: 99999;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  margin-left: -100px;
+  margin-top: -100px;
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#cc000000,endColorstr=#cc000000);
+  background: rgba(0,0,0,0.8);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+.ui-ios-overlay .title {
+  color: #FFF;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  font-size: 26px;
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+}
+.ui-ios-overlay img {
+  display: block;
+  margin: 20% auto 0 auto;
+}
+.ui-ios-overlay .spinner {
+  left: 50% !important;
+  top: 40% !important;
+}
+
+.ios-overlay-show {
+  -webkit-animation-name: ios-overlay-show;
+  -webkit-animation-duration: 750ms;
+  -moz-animation-name: ios-overlay-show;
+  -moz-animation-duration: 750ms;
+  -ms-animation-name: ios-overlay-show;
+  -ms-animation-duration: 750ms;
+  -o-animation-name: ios-overlay-show;
+  -o-animation-duration: 750ms;
+  animation-name: ios-overlay-show;
+  animation-duration: 750ms;
+}
+
+@-webkit-keyframes ios-overlay-show {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes ios-overlay-show {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-ms-keyframes ios-overlay-show {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-o-keyframes ios-overlay-show {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes ios-overlay-show {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.ios-overlay-hide {
+  -webkit-animation-name: ios-overlay-hide;
+  -webkit-animation-duration: 750ms;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-name: ios-overlay-hide;
+  -moz-animation-duration: 750ms;
+  -moz-animation-fill-mode: forwards;
+  -ms-animation-name: ios-overlay-hide;
+  -ms-animation-duration: 750ms;
+  -ms-animation-fill-mode: forwards;
+  -o-animation-name: ios-overlay-hide;
+  -o-animation-duration: 750ms;
+  -o-animation-fill-mode: forwards;
+  animation-name: ios-overlay-hide;
+  animation-duration: 750ms;
+  animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes ios-overlay-hide {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@-moz-keyframes ios-overlay-hide {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@-ms-keyframes ios-overlay-hide {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@-o-keyframes ios-overlay-hide {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes ios-overlay-hide {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}

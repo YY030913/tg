@@ -1,0 +1,20 @@
+<template name="followingList">
+	<ul>
+		{{#each friends}}
+			{{#if friendCate}}
+				<li class="gap" id="{{friendCate}}">{{friendCate}}</li>
+			{{/if}}
+			<li class="friend">
+				<button class="thumb user-card-message waves-effect waves-light " data-username="{{u.name}}" tabindex="1">{{> avatar username=u.name}}</button>
+				<h5 class="user-item">{{u.name}}</h5>
+				{{#if notcurrentuser u._id}}
+					{{#if followed u._id}}
+						<a class="btn-xs btn-info m-t-xs unfollow">{{_ "Cancel_Follow"}}</a>
+					{{else}}
+						<a class="btn-xs btn-info m-t-xs follow">{{_ "Follow"}}</a>
+					{{/if}}
+				{{/if}}
+			</li>
+		{{/each}}
+	</ul>
+</template>

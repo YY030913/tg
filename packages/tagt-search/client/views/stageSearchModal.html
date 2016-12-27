@@ -1,0 +1,37 @@
+<template name="stageSearchModal">
+	<div id="debateType" class="modal bottom-sheet">
+        <div class="modal-content">
+			<div id="box" class="container stage-search">
+			    <header class="module-topbar" id="boxId_1479213070088_1">
+			        <a class="fl iconf iconf_navbar_back" href="javascript:window.history.go(-1);" title="返回" data-act-type="hover"></a>
+			        <a class="fr iconf iconf_navbar_more isNew" href="javascript:;" data-node="more" title="" data-act-type="hover" data-newmsg="99+" data-newfs="" data-newwb="99+"></a>
+			        <div class="title-group">
+			            <h1 class="title txt-cut">搜索</h1></div>
+			    </header>
+			    <article class="search-wrapper" id="boxId_1479213070088_2">
+			        <header class="nav layout-box"><a href="javascript:;" data-type="all" data-act-type="hover" class="item box-col">全部</a><a href="javascript:;" data-type="user" data-act-type="hover" class="item box-col">用户</a><a href="javascript:;" data-type="wb" data-act-type="hover" class="item box-col isActive">微博</a></header>
+			        <form action="/searchs/result" class="search-box layout-box" node-type="search-box" method="get">
+			            <input type="hidden" name="type" value="wb">
+			            <div class="input-wrapper box-col"><span class="fl type iconf iconf_navbar_search" data-act-type="hover"></span><span class="fr clear hid" node-type="clear"></span>
+			                <div class="input-box">
+			                    <input name="queryVal" class="search forSearch" type="text" node-type="search" placeholder="搜索" autocomplete="off">
+			                </div>
+			            </div><span node-type="btn" data-act-type="hover" class="btn-txt isCancel">取消</span></form>
+			    </article>
+			    <div node-type="J-result-list" class="J-result-list" style="display:none;"></div>
+			    
+			    <div class="search-wrapper" style="display: block;">
+				    <div class="hot-wrapper">
+				        <div class="title"><span class="line"></span><span class="name">热门搜索</span><span class="line"></span></div>
+				        <div class="hot-content clearfix"><a class="hot-item" data-key="法医秦明">法医秦明</a><a class="hot-item" data-key="吃货木下">吃货木下</a><a class="hot-item" data-key="暴走大事件">暴走大事件</a><a class="hot-item" data-key="极乐净土">极乐净土</a><a class="hot-item" data-key="哔哩哔哩篮球队">哔哩哔哩篮球队</a><a class="hot-item" data-key="校对女孩河野悦子">校对女孩河野悦子</a><a class="hot-item" data-key="心里的声音">心里的声音</a><a class="hot-item" data-key="主播真会玩">主播真会玩</a><a class="hot-item" data-key="阴阳师">阴阳师</a><a class="hot-item" data-key="一年生">一年生</a><a class="hot-item" data-key="大胃王密子君">大胃王密子君</a><a class="hot-item" data-key="如果蜗牛有爱情">如果蜗牛有爱情</a><a class="hot-item" data-key="董力阿拉蕾">董力阿拉蕾</a><a class="hot-item" data-key="谷阿莫">谷阿莫</a><a class="hot-item" data-key="你的名字">你的名字</a><a class="hot-item" data-key="海贼王">海贼王</a><a class="hot-item" data-key="守望先锋">守望先锋</a><a class="hot-item" data-key="敖厂长">敖厂长</a><a class="hot-item" data-key="蜡笔小新">蜡笔小新</a><a class="hot-item" data-key="锦绣未央">锦绣未央</a></div>
+				    </div>
+				    <div class="history-wrapper">
+				        <div class="title"><span class="line"></span><span class="name">历史搜索</span><span class="line"></span></div>
+				        <div class="history-content"><a class="history-item" href="http://bilibili.com/mobile/search.html?keyword=%E7%81%AB%E6%98%9F"><i class="bili-icon-history"></i><span class="keyword">火星</span><i class="bili-icon-del history-clear" data-value="火星"></i></a><a class="history-item" href="http://bilibili.com/mobile/search.html?keyword=%E5%9B%9B%E4%B8%AA%E5%A9%9A%E7%A4%BC%E5%92%8C%E4%B8%80%E4%B8%AA%E8%91%AC%E7%A4%BC"><i class="bili-icon-history"></i><span class="keyword">四个婚礼和一个葬礼</span><i class="bili-icon-del history-clear" data-value="四个婚礼和一个葬礼"></i></a><a class="history-item" href="http://bilibili.com/mobile/search.html?keyword=.item-main%20%7B%20%20%20%20%20line-height%3A%201.125rem%3B%20%20%20%20%20overflow%3A%20hidden%3B%20%7D"><i class="bili-icon-history"></i><span class="keyword">.item-main {     line-height: 1.125rem;     overflow: hidden; }</span><i class="bili-icon-del history-clear" data-value=".item-main {     line-height: 1.125rem;     overflow: hidden; }"></i></a><a class="history-item" href="http://bilibili.com/mobile/search.html?keyword=%E6%96%B0%E5%A8%98%E7%99%BE%E5%88%86%E7%99%BE"><i class="bili-icon-history"></i><span class="keyword">新娘百分百</span><i class="bili-icon-del history-clear" data-value="新娘百分百"></i></a></div>
+				    </div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</template>

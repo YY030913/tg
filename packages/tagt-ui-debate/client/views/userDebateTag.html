@@ -1,0 +1,24 @@
+<template name="userDebateTag">
+	<div class="tag-wrapper">
+		<button class="new-message not">
+			<i class="icon-down-big"></i>
+			{{_ "New_messages"}}
+		</button>
+		<div class="wrapper">
+			{{#each debatesHistory}} 
+				{{#nrr nrrargs 'debateItem' .}}{{/nrr}} 
+			{{/each}}
+			{{#if hasMore}}
+				<li class="load-more">
+					{{#if isLoading}}
+						<div class="load-more-loading">{{_ "Loading_more_from_history"}}...</div>
+					{{else}}
+						<button>{{_ "Has_more"}}...</button>
+					{{/if}}
+				</li>
+			{{else}}
+				<p style="text-align:center;">{{_ 'Nothing'}}</p>
+			{{/if}}
+		</div>
+	</div>
+</template>

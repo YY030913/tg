@@ -1,0 +1,14 @@
+<template name="adBanner">
+	<div class="swiper-ad-container">
+		<div class="swiper-wrapper">
+			{{#each ads}}
+				<div class="swiper-slide">
+					<a href="{{url}}">
+						<img style="width: 100%;height: 150px;" src="{{cover}}" alt="{{name}}">
+					</a>
+				</div>
+			{{/each}}
+		</div>
+		<div class="swiper-ad-pagination"></div>
+	</div>
+</template>

@@ -1,0 +1,87 @@
+<template name="typeDebates">
+	<section class="page-container page-list">
+
+		<header class="fixed-title">
+			<div class="header-container">
+				{{> burger}}
+				<div class="pagetitle">
+					<h2>
+						<span class="room-title">{{_ pageTitle}}</span>
+					</h2>
+				</div>
+				<ul class="header-options">
+					<li class="waves-effect waves-block waves-light toggle-search">
+						<a href="javascript:void(0);">
+							<i class="icon-search"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</header>
+
+		
+		<div class="container" style="overflow-y: scroll;">
+			{{> adBanner}}
+			<div class=" tag-box">
+				<div class="touch-slider swiper-tag-container">
+					<ul class="swiper-wrapper touch-slider types">
+						{{#each openTags}}
+							{{#if hasPermission (viewOpenPermission name)}}
+								<li class="touch-slider swiper-slide">
+									<a href="{{debatePath}}" class="hvr-radial-out">
+										<div class="tag-bg">
+											<div class="tag-icon" style="background: url(/images/tags/{{name}}.png) no-repeat;width: 36px;
+												height: 36px;
+												background-position-y: center;
+												background-position-x: center;
+												-webkit-background-size: 28px 28px;
+												background-size: 28px 28px;
+												-moz-background-size: 28px 28px;
+												-o-background-size: 28px 28px;">
+											</div>
+										</div>
+										<h6>{{_ name}}</h6>
+										{{#if unread _id}}
+											<span class="new badge">{{unread _id}}</span>
+										{{/if}}
+									</a>
+									
+								</li>
+							{{/if}}
+						{{/each}}
+					</ul>
+				</div>
+			</div>
+			
+				{{#unless hasPermission "access-debate-tag"}}
+					<p>{{_ "You_are_not_authorized_to_view_this_page"}}</p>
+				{{else}}
+					<div class="wrapper tag-wrapper">
+						<button class="new-message not">
+						<i class="icon-down-big"></i>
+						{{_ "New_messages"}}
+					</button>
+						{{#each debatesHistory}} 
+							{{#nrr nrrargs 'debateItem' .}}{{/nrr}} 
+						{{/each}}
+						{{#if hasMoreNext}}
+						<div class="load-more">
+							{{#if isLoading}}
+								{{> loading}}
+							{{else}}
+								<button>{{_ "Has_more"}}...</button>
+							{{/if}}
+						</div>
+					{{else}}
+						<p style="text-align:center;">{{_ 'Nothing'}}</p>
+					{{/if}}
+					</div>
+				{{/unless}}
+		</div>
+	</section>
+	<div class="fbtn-container">
+		<div class="fbtn-inner">
+			<a class="fbtn-lg"><i class="icon-plus" aria-hidden="true"></i></a>
+		</div>
+	</div>
+</template>

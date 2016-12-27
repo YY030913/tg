@@ -1,0 +1,13 @@
+<template name="followerList">
+	<ul>
+		{{#each friends}}
+			{{#if friendCate}}
+				<li class="gap" id="{{friendCate}}">{{friendCate}}</li>
+			{{/if}}
+			<li class="friend">
+				<button class="thumb user-card-message waves-effect waves-light " data-username="{{friend.name}}" tabindex="1">{{> avatar username=friend.name}}</button>
+				<h5 class="user-item">{{friend.name}}</h5>
+			</li>
+		{{/each}}
+	</ul>
+</template>

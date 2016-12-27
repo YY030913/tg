@@ -1,0 +1,1 @@
+LDAPJS = Npm.require('ldapjs');

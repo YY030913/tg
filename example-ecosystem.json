@@ -1,0 +1,12 @@
+{
+	"deploy": {
+		"production": {
+			"user": "root",
+			"host": ["talk.get"],
+			"ref": "origin/master",
+			"repo": "https://github.com/TAGT/TalkGet.git",
+			"path": "/var/www/talk.get",
+			"post-deploy": "source build.sh production"
+		}
+	}
+}

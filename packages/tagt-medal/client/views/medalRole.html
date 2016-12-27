@@ -1,0 +1,107 @@
+<template name="medalRole">
+	<div class="permissions-manager">
+		{{#if hasPermission}}
+			<a href="{{pathFor "admin-tags"}}">{{_ "Back"}}</a><br><br>
+
+			{{#with role}}
+				<form id="form-role" class="inline form-role">
+					<label>{{_ "Tag"}} :</label>
+						{{#if editing}}
+							<span>{{_id}}</span>
+						{{else}}
+							<input type="text" name="name" value="">
+						{{/if}}
+					<br>
+					<label>{{_ "Description"}} :</label>
+						<input type="text" name="description" value="{{description}}">
+					<br>
+					{{#each showOnSelectType}}
+						<div class="chip">
+		                    <label class="edit-label" >{{_ name}}</label>
+		                    <i class="material-icons mdi-navigation-close"></i>
+		                </div>
+					{{/each}}
+					<button class="add-label waves-effect waves-light " data-toggle="collapse">
+						<label>+ {{_ "Role"}}</label>
+						<i></i>
+					</button>
+					{{> popRoleInput}}
+					<br>
+					<label>{{_ "Type"}} :</label>
+						<input type="text" name="t" max-length="1" value="{{t}}">
+					<br>
+					<label>{{_ "Scope"}} :</label>
+					<select name="scope" disabled="{{protected}}">
+						<option value="Users" selected="{{$eq scope 'Users'}}">{{_ "Global"}}</option>
+						<option value="Debates" selected="{{$eq scope 'Debates'}}">{{_ "Debates"}}</option>
+						<option value="Subscriptions" selected="{{$eq scope 'Subscriptions'}}">{{_ "Rooms"}}</option>
+					</select>
+					<div class="form-buttons">
+						<button name="save" class="button waves-effect waves-light primary">{{_ "Save"}}</button>
+
+						{{#if editable}}
+							<button name="delete" class="button waves-effect waves-light red delete-role">{{_ "Delete"}}</button>
+						{{/if}}
+					</div>
+				</form>
+			{{/with}}
+
+			{{#if editing}}
+				<h2>{{_ "Users_in_role"}}</h2>
+				{{#if $eq role.scope 'Subscriptions'}}
+				<form id="form-search-room" class="inline">
+					<label>{{_ "Choose_a_room"}}</label>
+					{{!-- <input type="text" name="room" placeholder="{{_ "Enter_a_room_name"}}"> --}}
+					{{> inputAutocomplete settings=autocompleteChannelSettings name="room" class="search" placeholder=(_ "Enter_a_room_name") autocomplete="off"}}
+				</form>
+				{{/if}}
+				{{#if $or ($eq role.scope 'Users') searchRoom}}
+					{{#if Template.subscriptionsReady}}
+						<form id="form-users" class="inline">
+							<label>{{_ "Add_user"}}</label>
+							<input type="text" name="username" placeholder="{{_ "Enter_a_username"}}">
+							<button name="add" class="button waves-effect waves-light primary">{{_ "Add"}}</button>
+						</form>
+						<div class="list">
+							<table>
+								<thead>
+									<tr>
+										<th>&nbsp;</th>
+										<th width="34%">{{_ "Name"}}</th>
+										<th width="33%">{{_ "Username"}}</th>
+										<th width="33%">{{_ "Email"}}</th>
+										<th>&nbsp;</th>
+									</tr>
+								</thead>
+								<tbody>
+									{{#unless hasUsers}}
+										<tr>
+											<td colspan="5" class="empty-role">{{_ "There_are_no_users_in_this_role"}}</td>
+										</tr>
+									{{/unless}}
+									{{#each userInRole}}
+										<tr class="user-info" data-id="{{_id}}">
+											<td>
+												<div class="user-image status-{{status}}">
+													{{> avatar username=username}}
+												</div>
+											</td>
+											<td>{{name}}</td>
+											<td>{{username}}</td>
+											<td>{{emailAddress}}</td>
+											<td><a href="#remove" class="remove-user"><i class="icon-block"></i></a></td>
+										</tr>
+									{{/each}}
+								</tbody>
+							</table>
+						</div>
+					{{else}}
+						{{_ "Loading..."}}
+					{{/if}}
+				{{/if}}
+			{{/if}}
+		{{else}}
+			{{_ "Not_authorized"}}
+		{{/if}}
+	</div>
+</template>

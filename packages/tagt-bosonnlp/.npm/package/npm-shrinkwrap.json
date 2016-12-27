@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "bosonnlp": {
+      "version": "0.0.9",
+      "resolved": "https://registry.npmjs.org/bosonnlp/-/bosonnlp-0.0.9.tgz",
+      "from": "bosonnlp@0.0.9"
+    }
+  }
+}

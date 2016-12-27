@@ -1,0 +1,89 @@
+<template name="debate">
+	<section class="page-container page-home page-static" id="debateContainer">
+		{{#if isSub}}
+			{{#if isEmpty}}
+				{{> debateNotFound}}
+			{{else}}
+			<header class="fixed-title">
+				<div class="header-container">
+				<!-- <header id="header" class="page-topbar"> -->
+					{{> burger}}
+					<div class="pagetitle">
+						<h2>
+							<span class="room-title">{{pagetitle}}</span>
+						</h2>
+					</div>
+					
+					<ul class="right">
+						{{#if validEdit}}
+							<li>
+								<a href="{{pathFor 'debate-edit' slug=slug}}" class="waves-effect waves-block waves-light">
+									<i class="icon-edit"></i>
+								</a>
+							</li>
+						{{/if}}
+						<li>
+							<a href="javascript:void(0);" class="icon-comment-a waves-effect waves-block waves-light">
+								<i class="icon-comment"></i>
+							</a>
+						</li>
+		                <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen"><i class="mdi-action-settings-overscan"></i></a>
+		                </li>
+		            </ul>
+				</div>
+			</header>
+			
+			<div class="container">
+				<div class="author-info">
+					<div class="avatar-block status-{{status}}">
+						{{> avatar username=username}}
+					</div>
+					<a class="author-name blue-link" href="{{pathFor "user-profile" id=userid}}">
+						<span>{{_ "Author"}} {{username}}</span>
+					</a>
+					<!-- <span>{{_ "User_Score"}} </span> -->
+					<span class="date">{{_ "Created_at"}} {{createTime}}</span>
+				</div>
+
+				{{{htmlBody}}}
+				<div class="debate-flag-div">
+					{{#each debateflags}}
+						<div class="chip">
+		                    <label data-id="{{_id}}" contenteditable="{{#if $eq userid userId}}true{{else}}false{{/if}}" class="edit-label" >{{_ name}}</label>
+		                    {{#if $eq userid userId}}true{/if}}
+		                    	<i class="material-icons mdi-navigation-close"></i>
+		                    {{/if}}
+		                </div>
+						<!-- <div class="debate-flag-label">
+							<label data-id="{{_id}}" contenteditable="{{#if $eq userid userId}}true{{else}}false{{/if}}" class="edit-label" >{{_ name}}</label>
+							<i></i>
+						</div> -->
+					{{/each}}
+					{{#if hasPermission "update-debate-flag"}}
+						<button class="debate-flag-label add-label" data-toggle="collapse" data-target="#demo">
+							<label>+ {{_ "Flag"}}</label>
+							<i></i>
+						</button>
+						{{> popDebateFlagInput}}
+					{{/if}}
+				</div>
+				<!-- <div class="fiex-debate-menu"> -->
+						<!-- {{#if started}}
+							<i class="icon-star-empty menu-item"></i>
+						{{else}}
+							<i class="icon-star menu-item"></i>
+						{{/if}}
+						<i class="icon-share menu-item"></i> -->
+						<!-- <i class="icon-comment menu-item"></i>
+				</div> -->
+			</div>
+
+			{{/if}}
+		{{else}}
+			{{> loading}}
+		{{/if}}
+
+		
+		<!-- {{> favortie}} --><!-- float,popu -->
+	</section>
+</template>

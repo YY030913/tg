@@ -1,0 +1,38 @@
+<template name="pinnedMessagesPage">
+	<section class="page-container page-home page-static">
+		<header class="fixed-title">
+			<div class="header-container">
+				{{> burger}}
+				<div class="pagetitle">
+					<h2>
+						<span class="room-title">{{_ "Pinned_Messages"}}</span>
+					</h2>
+				</div>
+				
+			</div>
+		</header>
+		<div class="container">
+			<div class="list-view pinned-messages-list">
+				{{#if Template.subscriptionsReady}}
+					{{#unless hasMessages}}
+						<h2>{{_ "No_pinned_messages"}}</h2>
+					{{/unless}}
+				{{/if}}
+			</div>
+			<ul class="list clearfix">
+				{{#each messages}}
+					{{#nrr nrrargs 'message' message}}{{/nrr}}
+				{{/each}}
+				{{#if hasMore}}
+					<li class="load-more">
+						{{#if Template.subscriptionsReady}}
+							<button>{{_ "Has_more"}}...</button>
+						{{else}}
+							<div class="load-more-loading">{{_ "Loading..."}}</div>
+						{{/if}}
+					</li>
+				{{/if}}
+			</ul>
+		</div>
+	</section>
+</template>
