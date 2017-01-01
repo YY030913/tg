@@ -23,7 +23,7 @@ Package.onUse(function(api) {
 		'coffeescript',
 		'underscore',
 		'tagt:lib',
-		'raix:push',
+		'raix:push@2.6.12',
 		'raix:ui-dropped-event'
 	]);
 

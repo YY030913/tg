@@ -212,10 +212,10 @@ TAGT.settings.addGroup 'Meta', ->
 
 TAGT.settings.addGroup 'Push', ->
 	@add 'Push_enable', true, { type: 'boolean', public: true }
-	@add 'Push_debug', false, { type: 'boolean', public: true, enableQuery: { _id: 'Push_enable', value: true } }
-	@add 'Push_enable_gateway', true, { type: 'boolean', enableQuery: { _id: 'Push_enable', value: true } }
-	@add 'Push_gateway', 'https://gateway.talk.get', { type: 'string', enableQuery: [{ _id: 'Push_enable', value: true }, { _id: 'Push_enable_gateway', value: true }] }
-	@add 'Push_production', true, { type: 'boolean', public: true, enableQuery: [{ _id: 'Push_enable', value: true }, { _id: 'Push_enable_gateway', value: false }] }
+	@add 'Push_debug', true, { type: 'boolean', public: true, enableQuery: { _id: 'Push_enable', value: true } }
+	@add 'Push_enable_gateway', false, { type: 'boolean', enableQuery: { _id: 'Push_enable', value: true } }
+	@add 'Push_gateway', 'https://gateway.rocket.chat', { type: 'string', enableQuery: [{ _id: 'Push_enable', value: true }, { _id: 'Push_enable_gateway', value: true }] }
+	@add 'Push_production', true, { type: 'boolean', public: true, enableQuery: [{ _id: 'Push_enable', value: true }, { _id: 'Push_enable_gateway', value: true }] }
 	@add 'Push_test_push', 'push_test', { type: 'action', actionText: 'Send_a_test_push_to_my_user', enableQuery: { _id: 'Push_enable', value: true } }
 
 	@section 'Certificates_and_Keys', ->
@@ -225,8 +225,8 @@ TAGT.settings.addGroup 'Push', ->
 		@add 'Push_apn_dev_passphrase', '', { type: 'string' }
 		@add 'Push_apn_dev_key', '', { type: 'string', multiline: true }
 		@add 'Push_apn_dev_cert', '', { type: 'string', multiline: true }
-		@add 'Push_gcm_api_key', '', { type: 'string' }
-		@add 'Push_gcm_project_number', '', { type: 'string', public: true }
+		@add 'Push_gcm_api_key', 'AIzaSyAegq0fKDw72THnYzNyhDiyAJwFuvUDVIw', { type: 'string' }
+		@add 'Push_gcm_project_number', '282710845697', { type: 'string', public: true }
 
 	@section 'Privacy', ->
 		@add 'Push_show_username_room', true, { type: 'boolean', public: true }

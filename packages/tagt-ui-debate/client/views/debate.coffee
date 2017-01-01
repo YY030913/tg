@@ -92,13 +92,13 @@ Template.debate.events
 
 	'click .icon-share': (event, instance)->
 		event.preventDefault()
-		options = {
+		options = [{
 		    message: 'share this',
 		    subject: 'the subject', 
 		    files: ['', ''],
 		    url: 'https://www.website.com/foo/#bar?a=b',
 		    chooserTitle: 'Pick an app'
-		}
+		}]
 
 		onSuccess = (result) ->
 		    console.log("Share completed? " + result.completed);
@@ -109,7 +109,7 @@ Template.debate.events
 		    console.log("Sharing failed with message: " + msg);
 
 
-		window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
+		window.plugins.socialsharing.share(options, onSuccess, onError);
 
 	'click .icon-comment-a': (event, instance)->
 		

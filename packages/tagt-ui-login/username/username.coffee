@@ -59,7 +59,6 @@ Template.username.events
 				###
 			else
 				Meteor.call 'getAvatarSuggestion', (error, avatars) ->
-					console.log avatars
 					avatar = {}
 					if avatars?.google
 						if avatars?.google.blob
@@ -111,7 +110,6 @@ Template.username.events
 							avatar.contentType = avatars?.gravatar.contentType
 							avatar?.service = "url"
 
-					console.log ""
 					if avatar.url?
 						Meteor.call 'setAvatarFromService', avatar?.url, '', 'url', (err) ->
 							if err?.details?.timeToReset?
