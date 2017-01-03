@@ -2,6 +2,9 @@
 # TAGT.settings holds all packages settings
 # @namespace TAGT.settings
 ###
+Meteor.settings = {}
+
+Meteor.settings.public = {}
 
 TAGT.settings.cachedCollection = new TAGT.CachedCollection({ name: 'public-settings', eventType: 'onAll' })
 TAGT.settings.collection = TAGT.settings.cachedCollection.collection
