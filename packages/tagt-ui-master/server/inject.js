@@ -3,25 +3,8 @@
 Inject.rawBody('page-loading', `
 <style>
 
-.external-login.wechat {
-	background: url(/images/wechat.png);
-	background-size: 100% 100%;
-}
-.external-login.google {
-	background: url(/images/google.png);
-	background-size: 100% 100%;
-}
-.external-login.weibo {
-	background: url(/images/weibo.png);
-	background-size: 100% 100%;
-}
-.external-login.facebook {
-	background: url(/images/facebook.png);
-	background-size: 100% 100%;
-}
-
 .full-page {
-	background: url('/images/full-bg.jpeg');
+	background: url('https://caoliao.net.cn/images/full-bg.jpeg');
 	background-size: 100% 100%;
 }
 
@@ -29,7 +12,7 @@ Inject.rawBody('page-loading', `
 	line-height: 80px;
 }
 .loading-image {
-	background: url(/images/logo/58x58.png);
+	background: url(https://caoliao.net.cn/images/logo/58x58.png);
 	background-size: 100% 100%;
 	position: absolute;
 	top: 60px;

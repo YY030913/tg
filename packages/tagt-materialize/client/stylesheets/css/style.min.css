@@ -1,3 +1,20 @@
+.external-login.wechat {
+	background: url(/images/wechat.png);
+	background-size: 100% 100%;
+}
+.external-login.google {
+	background: url(/images/google.png);
+	background-size: 100% 100%;
+}
+.external-login.weibo {
+	background: url(/images/weibo.png);
+	background-size: 100% 100%;
+}
+.external-login.facebook {
+	background: url(/images/facebook.png);
+	background-size: 100% 100%;
+}
+
 
 select {
 	background-color: transparent;
