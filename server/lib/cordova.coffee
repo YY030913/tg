@@ -57,6 +57,7 @@ configurePush = ->
 		apn = undefined
 		gcm = undefined
 
+		console.log TAGT.settings.get('Push_enable_gateway') 
 		if TAGT.settings.get('Push_enable_gateway') is false
 			gcm =
 				apiKey: TAGT.settings.get 'Push_gcm_api_key'
@@ -79,6 +80,8 @@ configurePush = ->
 
 			if not gcm.apiKey? or gcm.apiKey.trim() is '' or not gcm.projectNumber? or gcm.projectNumber.trim() is ''
 				gcm = undefined
+
+		console.log gcm
 
 		Push.Configure
 			apn: apn

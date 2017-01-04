@@ -2,6 +2,7 @@ Accounts.registerLoginHandler (loginRequest) ->
 	if not loginRequest.cordova
 		return undefined
 	
+	console.log loginRequest
 
 	if loginRequest.service == "facebook"
 		loginRequest = loginRequest.authResponse
@@ -59,7 +60,21 @@ Accounts.registerLoginHandler (loginRequest) ->
 		return Accounts.updateOrCreateUserFromExternalService("google", serviceData, options)
 
 	else if loginRequest.service == "wechat"
-		console.log "wechat"
+		serviceData =
+			accessToken: loginRequest.token
+			expiresAt: (+new Date) + (loginRequest.expire_at)
+
+		whitelisted = ['userId', 'displayName', 'email', 'location', 'description', 'profile_url', 'followers_count', 'friends_count', 'verified', 'verified_reason', 'avatar_large']
+		fields = _.pick(loginRequest, whitelisted)
+		fields.id = fields.userId
+		_.extend(serviceData, fields)
+
+		options = {profile: {}}
+		profileFields = _.pick(loginRequest, whitelisted)
+		profileFields.id = profileFields.userId
+		_.extend(options.profile, profileFields)
+
+		return Accounts.updateOrCreateUserFromExternalService("wechat", serviceData, options)
 
 
 

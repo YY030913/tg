@@ -14,23 +14,7 @@ Npm.depends({
 	'pinyin': '2.8.0'
 });
 
-Cordova.depends({
-	'cordova-plugin-camera': '2.1.0',
-	'cordova-plugin-device': '1.1.2',
-	'cordova-plugin-deviceMedia': 'file://../deviceMedia',
 
-	'cordova-plugin-inappbrowser': '1.0.1',
-	'cordova-plugin-media-capture': '1.3.0',
-	'cordova-plugin-network-information': '1.2.1',
-	'cordova-plugin-wechat': '1.3.0',
-	'cordova-plugin-compat': '1.1.0',
-	'cordova-plugin-console': '1.0.4',
-	'cordova-plugin-contacts': '2.2.0',
-	'cordova-plugin-weibo': '1.6.0',
-	'cordova-plugin-x-socialsharing': '5.1.3',
-	'org.apache.cordova.dialogs': '1.2.1',
-	'org.apache.cordova.vibration': '2.1.1'
-});
 
 Package.onUse(function(api) {
 	api.use('rate-limit');
