@@ -14,10 +14,11 @@ Meteor.loginWithWechatCordova = (options, callback) ->
 			userCallback: callback
 
 	if typeof Wechat isnt "undefined"
-		state = "_" + (+new Date())
-		Wechat.auth "snsapi_userinfo", state, fbLoginSuccess, (error) ->
-			console.log('login', JSON.stringify(error), error)
+		scope = "snsapi_userinfo"
+		newDate = +new Date()
+		state = "_#{newDate}"
+		Wechat.auth scope, state, fbLoginSuccess, (error) ->
 			callback(error)
 
 	else
-		Google.requestCredential(options, credentialRequestCompleteCallback)
+		Wechat.requestCredential(options, credentialRequestCompleteCallback)

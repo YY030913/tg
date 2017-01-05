@@ -112,7 +112,6 @@ Template.loginServices.events
 						return
 				
 			else if this.service.service is 'wechat'
-				toastr.error "wait wechat debuging"
 				Meteor.loginWithWechatCordova {}, (error) ->
 					overlay.hide();
 					if error
@@ -121,64 +120,6 @@ Template.loginServices.events
 						else
 							toastr.error error.message
 						return
-				###
-				Wechat.isInstalled ->
-					toastr.error "isInstalled"
-					toastr.error JSON.stringify(arguments)
-				, ->
-					toastr.error "isInstalled2"
-					toastr.error JSON.stringify(arguments)
-				scope = "snsapi_userinfo"
-				state = "_" + (+new Date());
-				
-				Wechat.share
-					text: "This is just a plain string",
-					scene: Wechat.Scene.TIMELINE
-					, ->
-						toastr.error "share", JSON.stringify(arguments)
-						console.log "share", JSON.stringify(arguments)
-					, ->
-						toastr.error "share2", JSON.stringify(arguments)
-						console.log "share2", JSON.stringify(arguments)
-				
-				Wechat.auth scope, state, ->
-					toastr.error "auth"
-					toastr.error JSON.stringify(arguments)
-				, ->
-					toastr.error "auth2"
-					toastr.error JSON.stringify(arguments)
-					alert("Failed: " + reason);
-
-				Wechat.share
-					message: {
-						title: "Hi, there",
-						description: "This is description.",
-						thumb: "www/img/thumbnail.png",
-						mediaTagName: "TEST-TAG-001",
-						messageExt: "这是第三方带的测试字段",
-						messageAction: "<action>dotalist</action>",
-						media: "YOUR_MEDIA_OBJECT_HERE"
-					},
-					scene: Wechat.Scene.TIMELINE
-				, ->
-					console.log("Success");
-				, (reason) ->
-					console.log("Failed: " + reason);
-
-				params = 
-					partnerid: '10000100',
-					prepayid: 'wx201411101639507cbf6ffd8b0779950874',
-					noncestr: '1add1a30ac87aa2db72f57a2375d8fec',
-					timestamp: '1439531364',
-					sign: '0CB01533B8C1EF103065174F50BCA001'
-
-
-				Wechat.sendPaymentRequest params
-				, ->
-					console.log("Success");
-				, (reason) ->
-					console.log("Failed: " + reason);
-				###
 		else
 			loginWithService = "loginWith" + (if this.service.service is 'meteor-developer' then 'MeteorDeveloperAccount' else _.capitalize(this.service.service))
 			serviceConfig = this.service.clientConfig or {}

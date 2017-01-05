@@ -60,6 +60,8 @@ Accounts.registerLoginHandler (loginRequest) ->
 		return Accounts.updateOrCreateUserFromExternalService("google", serviceData, options)
 
 	else if loginRequest.service == "wechat"
+		console.log "loginRequest"
+		console.log loginRequest
 		serviceData =
 			accessToken: loginRequest.token
 			expiresAt: (+new Date) + (loginRequest.expire_at)
