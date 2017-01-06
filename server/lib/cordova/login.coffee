@@ -132,7 +132,6 @@ getWechatUnionID = (accesstoken, openid) ->
 
 	catch err
 		throw _.extend new Error("Failed to fetch identity from Weibo. " + err.message), {response: err.response}
-https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID
 
 #http://m.2cto.com/weixin/201604/499478.html
 #http://mp.weixin.qq.com/wiki/14/bb5031008f1494a59c6f71fa0f319c66.html
