@@ -62,6 +62,8 @@ Accounts.registerLoginHandler (loginRequest) ->
 	else if loginRequest.service == "wechat"
 		at = getWechatAccessToken(loginRequest.code)
 
+		console.log at
+
 		userinfo = getWechatUnionID(at.access_token, at.openid)
 
 		serviceData =
