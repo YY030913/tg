@@ -133,7 +133,7 @@ class CachedCollection {
 		if (this.useCache === false) {
 			return callback(false);
 		}
-
+		
 		localforage.getItem(this.name, (error, data) => {
 			if (data && data.version < this.version) {
 				this.clearCache();

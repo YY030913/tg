@@ -49,9 +49,12 @@ Meteor.startup ->
 				moment.locale(language)
 
 	Meteor.subscribe("userData", () ->
+
 		userLanguage = Meteor.user()?.language
 		userLanguage ?= defaultUserLanguage()
 
+		console.log "userData", userLanguage
+		
 		if localStorage.getItem('userLanguage') isnt userLanguage
 			localStorage.setItem('userLanguage', userLanguage)
 

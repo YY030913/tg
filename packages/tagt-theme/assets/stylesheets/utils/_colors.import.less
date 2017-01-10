@@ -685,6 +685,8 @@ a.github-fork {
 // change to page-messages
 .messages-container {
 	border-right-color: @tertiary-background-color;
+	.background-image(linear-gradient(darken(@primary-background-color, 10%), @primary-background-color));
+	
 	.edit-room-title {
 		color: @secondary-font-color;
 		&:hover {
@@ -1152,7 +1154,7 @@ a.github-fork {
 
 .full-page {
 	background-color: darken(@primary-background-color, 10%);
-	.background-image(linear-gradient(darken(@primary-background-color, 10%), @primary-background-color));
+	// .background-image(linear-gradient(darken(@primary-background-color, 10%), @primary-background-color));
 	.text {
 		color: #FFF;
 		.button {

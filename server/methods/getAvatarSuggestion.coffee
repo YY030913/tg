@@ -14,12 +14,12 @@
 			service: 'google'
 			url: user.services.google.picture
 
-	if user.services.wechat?.picture? and Meteor.settings.public.wechat
+	if user.services.wechat?.headimgurl? and TAGT.settings.get 'Accounts_OAuth_Wechat'
 		avatars.push
 			service: 'wechat'
-			url: user.services.wechat.picture
+			url: user.services.wechat.headimgurl
 
-	if user.services.weibo?.avatar_large? and Meteor.settings.public.weibo
+	if user.services.weibo?.avatar_large? and TAGT.settings.get 'Accounts_OAuth_Weibo'
 		avatars.push
 			service: 'weibo'
 			url: user.services.weibo.avatar_large
@@ -61,6 +61,7 @@
 				url: Gravatar.imageUrl(email.address, {default: '404', size: 200, secure: true})
 
 	validAvatars = {}
+
 	for avatar in avatars
 		try
 			result = HTTP.get avatar.url, npmRequestOptions: {encoding: 'binary'}

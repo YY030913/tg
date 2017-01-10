@@ -869,10 +869,11 @@ Template.room.onRendered ->
 				if webrtc.localUrl.get()?
 					TAGT.TabBar.setTemplate 'membersList'
 					TAGT.TabBar.openFlex()
-
+	###
 	audioInterval = Meteor.setInterval ->
 		if $('div:not(.audioplayer)>audio').length > 0
 			Meteor.clearInterval(audioInterval);
 			$('div:not(.audioplayer)>audio').audioPlayer();
 
 	,1000
+	###

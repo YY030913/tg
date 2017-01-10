@@ -1,3 +1,6 @@
+# preferAudioCodec
+# https://www.html5rocks.com/en/tutorials/webrtc/infrastructure/
+
 emptyFn = ->
 	# empty
 

@@ -1,5 +1,19 @@
 `import Clipboard from 'clipboard';`
 
+
+loadjscssfile = (filename, filetype)->
+	if filetype=="js"
+		fileref=document.createElement('script')
+		fileref.setAttribute("type","text/javascript")
+		fileref.setAttribute("src", filename)
+	else if filetype=="css"
+		fileref=document.createElement("link")
+		fileref.setAttribute("rel", "stylesheet")
+		fileref.setAttribute("type", "text/css")
+		fileref.setAttribute("href", filename)
+	if (typeof fileref)? && document.getElementById("jscssloaded")?
+		document.getElementById("jscssloaded").appendChild(fileref)
+
 Template.body.onRendered ->
 	clipboard = new Clipboard('.clipboard')
 
@@ -115,7 +129,6 @@ Template.body.onRendered ->
 
 	Tracker.autorun (c) ->
 		c.stop()
-
 		Meta.set
 			name: 'name'
 			property: 'application-name'
@@ -126,9 +139,19 @@ Template.body.onRendered ->
 			property: 'apple-mobile-web-app-title'
 			content: TAGT.settings.get 'Site_Name'
 
+	Tracker.autorun (c) ->
+		if TAGT.settings.get "Site_Url"
+			c.stop()
+
+			site = TAGT.settings.get "Site_Url"
+
+			loadjscssfile("#{site}/__cordova/theme.css","css")
+
+
 	if Meteor.isCordova
 		$(document.body).addClass 'is-cordova'
 
+		
 
 Template.main.helpers
 
@@ -151,6 +174,9 @@ Template.main.helpers
 
 	subsReady: ->
 		ready = not Meteor.userId()? or (FlowRouter.subsReady('userData', 'activeUsers') and CachedChatSubscription.ready.get())
+		console.log Meteor.userId()
+		console.log FlowRouter.subsReady('userData', 'activeUsers') 
+		console.log CachedChatSubscription.ready.get()
 		TAGT.CachedCollectionManager.syncEnabled = ready
 		return ready
 

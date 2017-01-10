@@ -88,6 +88,9 @@ App.configurePlugin('phonegap-plugin-push', {
 	SENDER_ID: "282710845697"
 });
 
+App.configurePlugin('jpush-phonegap-plugin', {
+	APP_KEY: "8702468fb4d811baaf703866"
+});
 
 
 App.setPreference('BackgroundColor', "#404461");

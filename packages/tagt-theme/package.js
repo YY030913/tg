@@ -24,6 +24,15 @@ Package.onUse(function(api) {
 	api.addFiles('client/minicolors/jquery.minicolors.js', 'client');
 
 
+	api.addAssets([
+		'assets/stylesheets/fonts/fontello.eot',
+		'assets/stylesheets/fonts/fontello.ttf',
+		'assets/stylesheets/fonts/fontello.woff',
+		'assets/stylesheets/fonts/fontello.woff2',
+	], ['client']);
+
+	api.addFiles('assets/stylesheets/fontello.css', 'client');
+
 	api.addAssets('assets/stylesheets/global/_variables.less', 'server');
 	api.addAssets('assets/stylesheets/utils/_colors.import.less', 'server');
 	api.addAssets('assets/stylesheets/utils/_keyframes.import.less', 'server');
@@ -33,7 +42,7 @@ Package.onUse(function(api) {
 	api.addAssets('assets/stylesheets/utils/_chatops.less', 'server');
 	api.addAssets('assets/stylesheets/animation.css', 'server');
 	api.addAssets('assets/stylesheets/base.less', 'server');
-	api.addAssets('assets/stylesheets/fontello.css', 'server');
+	// api.addAssets('assets/stylesheets/fontello.css', 'server');
 	api.addAssets('assets/stylesheets/rtl.less', 'server');
 	api.addAssets('assets/stylesheets/swipebox.min.css', 'server');
 

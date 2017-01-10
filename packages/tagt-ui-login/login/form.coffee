@@ -6,7 +6,6 @@ Template.loginForm.helpers
 		return if TAGT.settings.get 'Accounts_RequireNameForSignUp' then t('Name') else t('Name_optional')
 
 	showFormLogin: ->
-		return false
 		return TAGT.settings.get 'Accounts_ShowFormLogin'
 
 	state: (state..., data) ->

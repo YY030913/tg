@@ -108,7 +108,6 @@ Template.sideNav.events
 		Meteor.logout ->
 			TAGT.callbacks.run 'afterLogoutCleanUp', user
 			Meteor.call 'logoutCleanUp', user, (err) ->
-				localStorage.clear()
 				if err?
 					toastr.error t 'User_not_found_or_incorrect_password'
 

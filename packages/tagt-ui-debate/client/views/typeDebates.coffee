@@ -11,7 +11,7 @@ Template.typeDebates.helpers
 		return TAGT.settings.get 'From_Email'
 
 	debatesHistory: ->
-		return TAGT.models.Debates.find({t: FlowRouter.getParam('type')}, { sort: { ts: -1 } })
+		return TAGT.models.Debates.find({t: FlowRouter.getParam('type') || "o"}, { sort: { ts: -1 } })
 
 	unreadData: ->
 		return Template.instance().unreadData.get()
@@ -36,7 +36,7 @@ Template.typeDebates.events
 		FlowRouter.go "searchs"
 
 	'click .load-more': (e, t)-> #click .load-more > button
-		t.loadNextMore(FlowRouter.getParam('type'))
+		t.loadNextMore(FlowRouter.getParam('type') || "o")
 		
 	'click .new-message': (e) ->
 		Template.instance().atTop = true
@@ -113,23 +113,14 @@ Template.typeDebates.events
 	'scroll .container': _.throttle (e, instance) ->
 		if instance.isLoading.get() is true and instance.hasMoreNext.get() is true or instance.hasMore.get() is true
 			if instance.hasMoreNext.get() is true and e.target.scrollTop is 0
-				instance.loadMore(FlowRouter.getParam('type'))
+				instance.loadMore(FlowRouter.getParam('type') || "o")
 			else if instance.hasMore.get() is true and e.target.scrollTop >= e.target.scrollHeight - e.target.clientHeight
-				instance.loadNextMore(FlowRouter.getParam('type'))
+				instance.loadNextMore(FlowRouter.getParam('type') || "o")
 
 	, 200
 
 Template.typeDebates.onRendered ->
 	instance = @ 
-	Tracker.autorun ->
-
-		if instance.subscriptionsReady() && DebateSubscription.find({t:"o", name: $nin: ['Hot', 'News']}).count() > 0
-			
-			swiper = new Swiper('.swiper-tag-container', {
-				slidesPerView: 4,
-				paginationClickable: true
-			});
-
 
 	
 	@loadMore = (slug) =>
@@ -147,7 +138,7 @@ Template.typeDebates.onRendered ->
 				if !result?.debates? || result?.debates?.length == 0
 					instance.hasMore.set false
 				for item in result?.debates or []
-					item.t = FlowRouter.getParam('type')
+					item.t = slug
 					TAGT.models.Debates.upsert item._id, item
 				instance.isLoading.set false
 
@@ -165,13 +156,13 @@ Template.typeDebates.onRendered ->
 				if !result?.debates? || result?.debates?.length == 0
 					instance.hasMoreNext.set false
 				for item in result?.debates or []
-					item.t = FlowRouter.getParam('type')
+					item.t = slug
 					TAGT.models.Debates.upsert item._id, item
 
 				instance.isLoading.set false
 		
 
-	@loadMore(FlowRouter.getParam('type'))
+	@loadMore(FlowRouter.getParam('type') || "o")
 
 
 	template = this
@@ -225,6 +216,22 @@ Template.typeDebates.onCreated ->
 
 
 	@atTop = true
+	instance = @
+
+	Tracker.autorun (c) ->
+		console.log "autorun"
+		if Meteor.userId()
+			console.log Meteor.userId()
+			subscription = Meteor.subscribe('debateSubscription')
+
+			if instance.subscriptionsReady() && subscription.ready() && DebateSubscription.find({t:"o", name: $nin: ['Hot', 'News']}).count() > 0
+				c.stop()
+				
+				swiper = new Swiper('.swiper-tag-container', {
+					slidesPerView: 4,
+					paginationClickable: true
+				});
+
 
 Template.typeDebates.onDestroyed ->
 	DebatesManager.clear this.data._id

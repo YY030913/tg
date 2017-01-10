@@ -25,7 +25,6 @@ Template.avatarPrompt.helpers
 
 	suggestAvatar: (service) ->
 		suggestions = Template.instance().suggestions.get()
-		console.log suggestions.avatars
 		return TAGT.settings.get("Accounts_OAuth_#{_.capitalize service}") and not suggestions.avatars[service]
 
 	upload: ->
@@ -69,21 +68,88 @@ Template.avatarPrompt.events
 					TAGT.callbacks.run('userAvatarSet', tmpService)
 
 	'click .login-with-service': (event, template) ->
-		loginWithService = "loginWith#{_.capitalize(this)}"
 
-		serviceConfig = {}
+		if Meteor.isCordova
+			opts = {
+				lines: 13, 
+				length: 11,
+				width: 5, 
+				radius: 17,
+				corners: 1,
+				rotate: 0, 
+				color: '#FFF',
+				speed: 1, 
+				trail: 60, 
+				shadow: false,
+				hwaccel: false, 
+				className: 'spinner',
+				zIndex: 2e9,
+				top: 'auto',
+				left: 'auto'
+			};
+			target = document.createElement("div");
+			document.body.appendChild(target);
+			spinner = new Spinner(opts).spin(target);
+			overlay = window.iosOverlay({
+				text: "Loading",
+				spinner: spinner
+			});
+			if this.service.service is 'facebook'
+				Meteor.loginWithFacebookCordova {}, (error) ->
+					overlay.hide();
+					if error
+						if error.reason
+							toastr.error error.reason
+						else
+							toastr.error error.message
+						return
 
-		Meteor[loginWithService] serviceConfig, (error) ->
-			if error?.error is 'github-no-public-email'
-				alert t("github_no_public_email")
-				return
+			else if this.service.service is 'weibo'
+				Meteor.loginWithWeiboCordova {}, (error) ->
+					overlay.hide();
+					if error
+						if error.reason
+							toastr.error error.reason
+						else
+							toastr.error error.message
+						return
+				
+			else if this.service.service is 'google'
+				Meteor.loginWithGoogleCordova {}, (error) ->
+					overlay.hide();
+					if error
+						if error.reason
+							toastr.error error.reason
+						else
+							toastr.error error.message
+						return
+				
+			else if this.service.service is 'wechat'
+				Meteor.loginWithWechatCordova {}, (error) ->
+					overlay.hide();
+					if error
+						if error.reason
+							toastr.error error.reason
+						else
+							toastr.error error.message
+						return
 
-			console.log error
-			if error?
-				toastr.error error.message
-				return
+		else
+			loginWithService = "loginWith#{_.capitalize(this)}"
 
-			template.getSuggestions()
+			serviceConfig = {}
+
+			Meteor[loginWithService] serviceConfig, (error) ->
+				if error?.error is 'github-no-public-email'
+					alert t("github_no_public_email")
+					return
+
+				console.log error
+				if error?
+					toastr.error error.message
+					return
+
+				template.getSuggestions()
 
 	'change .avatar-file-input': (event, template) ->
 		e = event.originalEvent or event

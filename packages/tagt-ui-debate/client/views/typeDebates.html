@@ -53,30 +53,26 @@
 				</div>
 			</div>
 			
-				{{#unless hasPermission "access-debate-tag"}}
-					<p>{{_ "You_are_not_authorized_to_view_this_page"}}</p>
-				{{else}}
-					<div class="wrapper tag-wrapper">
-						<button class="new-message not">
-						<i class="icon-down-big"></i>
-						{{_ "New_messages"}}
-					</button>
-						{{#each debatesHistory}} 
-							{{#nrr nrrargs 'debateItem' .}}{{/nrr}} 
-						{{/each}}
-						{{#if hasMoreNext}}
-						<div class="load-more">
-							{{#if isLoading}}
-								{{> loading}}
-							{{else}}
-								<button>{{_ "Has_more"}}...</button>
-							{{/if}}
-						</div>
-					{{else}}
-						<p style="text-align:center;">{{_ 'Nothing'}}</p>
-					{{/if}}
+			<div class="wrapper tag-wrapper">
+				<button class="new-message not">
+					<i class="icon-down-big"></i>
+					{{_ "New_messages"}}
+				</button>
+					{{#each debatesHistory}} 
+						{{#nrr nrrargs 'debateItem' .}}{{/nrr}} 
+					{{/each}}
+					{{#if hasMoreNext}}
+					<div class="load-more">
+						{{#if isLoading}}
+							{{> loading}}
+						{{else}}
+							<button>{{_ "Has_more"}}...</button>
+						{{/if}}
 					</div>
-				{{/unless}}
+				{{else}}
+					<p style="text-align:center;">{{_ 'Nothing'}}</p>
+				{{/if}}
+			</div>
 		</div>
 	</section>
 	<div class="fbtn-container">

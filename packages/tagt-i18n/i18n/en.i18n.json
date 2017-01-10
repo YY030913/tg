@@ -1396,5 +1396,53 @@
   "your_message" : "your message",
   "your_message_optional" : "your message (optional)",
   "Your_password_is_wrong" : "Your password is wrong!",
-  "Your_push_was_sent_to_s_devices" : "Your push was sent to %s devices"
+  "Your_push_was_sent_to_s_devices" : "Your push was sent to %s devices",
+
+  
+  "Ad": "advertising",
+  "Ad_Editing": "Ad editor",
+  "Address": "address",
+  "Country": "country",
+  "Country_State": "Province / State",
+  "Country_State_City": "city",
+  "Discory": "Discory",
+  "Friend_Activity": "Friend Activity",
+  "Hot": "Hot",
+  "Hot_Search": "popular searches",
+  "Invite_Me": "Invite Me",
+  "Joined_Debate": "Participation in the debate",
+  "Join_Debate": "Join the discussion",
+  "Living": "Living",
+  "Me": "Me",
+  "Nation": "Nation",
+  "New_Tag": "New Tag",
+  "New_Ad": "New Ad",
+  "Search_By_Role": "Search By Role",
+  "Search_Emoji": "Search Emoji",
+  "Search_History": "Search History",
+  "Show_On_Select_Debate_Type": "Show On Select Debate Type",
+  "View_Subject": "View Subject",
+
+  "Pk": "Pk",
+  "Government_Interpretation": "policy",
+  "Institution_Match": "competition",
+  "Organization_Activity": "social",
+  "Society_Topic": "issues",
+  "Company_Discuss": "Business",
+
+  "Introduction": "Introduction",
+  "Default_Introduction": "",
+
+  "error-create-debate-count-off": "Has run out of today to create the number, come back tomorrow",
+  "error-not-allow-for-the-debateType": "This type is out of your scope",
+  "error-empty-debate-name": "Debate name can not be empty",
+  "error-invalid-name-length": "'__name__' invalid length, please make sure it between __min_length__ to __max_length__ ",
+
+  "No_Remote_User": "There is no other remote users, waiting for other users to join",
+
+  "SIGN_IN_CANCELLED": "12501 SIGN IN CANCELLED",
+  "SIGN_IN_FAILED": "12500 SIGN IN FAILED",
+  "SIGN_IN_REQUIRED": "4 SIGN IN REQUIRED",
+  "INTERNAL_ERROR": "8 INTERNAL ERROR",
+  "NETWORK_ERROR": "7 NETWORK ERROR"
 }

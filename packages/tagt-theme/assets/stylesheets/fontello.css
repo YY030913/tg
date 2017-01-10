@@ -19,7 +19,7 @@
 }
 */
 
- [class^="icon-"]:before, [class*=" icon-"]:before {
+ [class^="icon-"]:not([class^="icon-wangEditor-m"]):before, [class*=" icon-"]:not([class*=" icon-wangEditor-m"]):before {
   font-family: "fontello";
   font-style: normal;
   font-weight: normal;

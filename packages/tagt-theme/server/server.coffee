@@ -54,7 +54,6 @@ TAGT.theme = new class
 		'assets/stylesheets/utils/_chatops.less'
 		'assets/stylesheets/animation.css'
 		'assets/stylesheets/base.less'
-		'assets/stylesheets/fontello.css'
 		'assets/stylesheets/rtl.less'
 		'assets/stylesheets/swipebox.min.css'
 		'assets/stylesheets/utils/_colors.import.less'

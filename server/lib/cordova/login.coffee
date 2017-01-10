@@ -1,8 +1,6 @@
 Accounts.registerLoginHandler (loginRequest) ->
 	if not loginRequest.cordova
 		return undefined
-	
-	console.log loginRequest
 
 	if loginRequest.service == "facebook"
 		loginRequest = loginRequest.authResponse
@@ -62,22 +60,24 @@ Accounts.registerLoginHandler (loginRequest) ->
 	else if loginRequest.service == "wechat"
 		at = getWechatAccessToken(loginRequest.code)
 
-		console.log at
+		atObject = JSON.parse(at);
 
-		userinfo = getWechatUnionID(at.access_token, at.openid)
+		userinfo = JSON.parse(getWechatUnionID(atObject.access_token, atObject.openid))
 
 		serviceData =
-			accessToken: loginRequest.token
-			expiresAt: (+new Date) + (loginRequest.expire_at)
+			accessToken: atObject.access_token
+			expiresAt: (+new Date) + (atObject.expires_in)
 
 		whitelisted = ['openid', 'nickname', 'sex', 'province', 'city', 'country', 'headimgurl', 'privilege', 'unionid']
 		fields = _.pick(userinfo, whitelisted)
+		fields.name = fields.nickname
 		fields.id = fields.openid
 		_.extend(serviceData, fields)
 
 		options = {profile: {}}
 		profileFields = _.pick(userinfo, whitelisted)
 		profileFields.id = profileFields.userId
+		profileFields.name = profileFields.nickname
 		_.extend(options.profile, profileFields)
 
 		return Accounts.updateOrCreateUserFromExternalService("wechat", serviceData, options)
@@ -123,17 +123,17 @@ getWeiboEmail = (token) ->
 
 getWechatAccessToken = (code) ->
 	try
-		return HTTP.get("https://api.weixin.qq.com/sns/oauth2/access_token", {params: {appid:"wx96f86a95cb3e67f1", secret: "74fdbe901c165d138e9f0c957e7092c5", code: code, grant_type: "authorization_code"}}).data
+		return HTTP.get("https://api.weixin.qq.com/sns/oauth2/access_token", {params: {appid:"wx96f86a95cb3e67f1", secret: "74fdbe901c165d138e9f0c957e7092c5", code: code, grant_type: "authorization_code"}}).content
 
 	catch err
-		throw _.extend new Error("Failed to fetch identity from Weibo. " + err.message), {response: err.response}
+		throw _.extend new Error("Failed to fetch identity from wechat. " + err.message), {response: err.response}
 
 getWechatUnionID = (accesstoken, openid) ->
 	try
-		return HTTP.get("https://api.weixin.qq.com/sns/userinfo", {params: {access_token: accesstoken, openid: openid}}).data
+		return HTTP.get("https://api.weixin.qq.com/sns/userinfo", {params: {access_token: accesstoken, openid: openid}}).content
 
 	catch err
-		throw _.extend new Error("Failed to fetch identity from Weibo. " + err.message), {response: err.response}
+		throw _.extend new Error("Failed to fetch identity from wechat. " + err.message), {response: err.response}
 
 #http://m.2cto.com/weixin/201604/499478.html
 #http://mp.weixin.qq.com/wiki/14/bb5031008f1494a59c6f71fa0f319c66.html

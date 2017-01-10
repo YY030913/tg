@@ -216,7 +216,6 @@ Template.debateEdit.onCreated ->
 								FlowRouter.go("/openFlag/debates/News");
 
 	currentTracker = Tracker.autorun (c) ->
-		console.log "Tracker.autorun"
 
 		if isSubscribed() && TAGT.models.Debate.find(FlowRouter.current().params.slug).count() == 0
 			currentTracker = undefined
@@ -227,17 +226,19 @@ Template.debateEdit.onCreated ->
 
 	width = $(window).width()
 	
-	if TAGT.models.Debate.findOne(FlowRouter.current().params.slug).save
-		Session.set("debateType", TAGT.models.Debate.findOne(FlowRouter.current().params.slug).debateType)
-	
 	md = new MobileDetect(window.navigator.userAgent);
 
 
 	initInterval = Meteor.setInterval ->
 		if $("#edit-content").length > 0 && isSubscribed() && TAGT.models.Debate.findOne(FlowRouter.current().params.slug)?
 			Meteor.clearInterval initInterval
+
+			if TAGT.models.Debate.findOne(FlowRouter.current().params.slug).save
+				Session.set("debateType", TAGT.models.Debate.findOne(FlowRouter.current().params.slug).debateType)
+
+			
 			currentTracker = undefined
-			c.stop()
+			
 			if Meteor.isCordova || md.mobile()?
 				editorobj = new window.___E('edit-content');
 				editorobj.config.menus = [
