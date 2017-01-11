@@ -1451,6 +1451,7 @@ label.required:after {
 	.container {
 		&:extend(.fill-all);
 		// padding: 25px 40px 0px;
+		padding-top: 10px;
 		margin-top: 60px;
 		-webkit-overflow-scrolling: touch;
 		.calc(height, ~'100% - 60px');
@@ -1911,6 +1912,7 @@ label.required:after {
 						text-overflow: ellipsis;
 						white-space: nowrap;
 						font-size: 20px;
+						line-height: 24px;
 					}
 				}
 				.debate-item-content {
@@ -2326,11 +2328,11 @@ label.required:after {
 		font-size: 16px;
 	}
 	.header-options {
-		top: 20px;
+		top: 0px;
 		right: 10px;
 		position: absolute;
 
-		li {
+		li:not(.dropdownItem)  {
 			float: right;
 			-webkit-transition: background-color 0.3s;
 			-moz-transition: background-color 0.3s;
@@ -2338,9 +2340,11 @@ label.required:after {
 			-ms-transition: background-color 0.3s;
 			transition: background-color 0.3s;
 			float: right;
-			padding: 0 15px;
 			overflow: hidden;
 			white-space: nowrap;
+			width: 60px;
+			height: 60px;
+			line-height: 60px;
 
 			&:hover, &:active {
 				background-color: rgba(0, 0, 0, 0.1);
@@ -2373,6 +2377,7 @@ label.required:after {
 		a {
 			font-size: 1rem;
 			display: block;
+			text-align: center;
 		}
 	}
 }

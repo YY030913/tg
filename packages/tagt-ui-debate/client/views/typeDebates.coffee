@@ -224,13 +224,25 @@ Template.typeDebates.onCreated ->
 			console.log Meteor.userId()
 			subscription = Meteor.subscribe('debateSubscription')
 
-			if instance.subscriptionsReady() && subscription.ready() && DebateSubscription.find({t:"o", name: $nin: ['Hot', 'News']}).count() > 0
-				c.stop()
-				
-				swiper = new Swiper('.swiper-tag-container', {
-					slidesPerView: 4,
-					paginationClickable: true
-				});
+			if FlowRouter.getParam('type')? && FlowRouter.getParam('type') != "undefined" && FlowRouter.getParam('type') != "o"
+				if instance.subscriptionsReady() && subscription.ready() && DebateSubscription.find({t:FlowRouter.getParam('type')}).count() > 0
+					c.stop()
+					
+					swiper = new Swiper('.swiper-tag-container', {
+						slidesPerView: 4,
+						paginationClickable: true
+					});
+
+			else
+
+
+				if instance.subscriptionsReady() && subscription.ready() && DebateSubscription.find({t:"o", name: $nin: ['Hot', 'News']}).count() > 0
+					c.stop()
+					
+					swiper = new Swiper('.swiper-tag-container', {
+						slidesPerView: 4,
+						paginationClickable: true
+					});
 
 
 Template.typeDebates.onDestroyed ->

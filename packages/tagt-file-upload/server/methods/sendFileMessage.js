@@ -3,8 +3,9 @@ Meteor.methods({
 		if (!Meteor.userId()) {
 			throw new Meteor.Error('error-invalid-user', 'Invalid user', { method: 'sendFileMessage' });
 		}
-
+		console.log("arguments",arguments);
 		var room = Meteor.call('canAccessRoom', roomId, Meteor.userId());
+		console.log(room);
 
 		if (!room) {
 			return false;

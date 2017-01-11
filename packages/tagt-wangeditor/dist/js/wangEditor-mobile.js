@@ -306,12 +306,12 @@ window.___E_mod(function (E, $) {
 		self.menus = {};		
 		self.addMenuBold('bold');
 		self.addMenuHead('head');
-		// self.addMenuColor('color');
+		self.addMenuColor('color');
 		self.addMenuQuote('quote');
 		// self.addMenuList('list');
 		// self.addMenuCheck('check');
 		// self.addMenuHappy('happy');
-		// self.addMenuImg('img');
+		self.addMenuImg('img');
 	};
 
 });

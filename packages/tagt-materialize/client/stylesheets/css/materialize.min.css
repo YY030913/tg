@@ -6133,6 +6133,8 @@ button.btn-floating {
 	display: block;
 	line-height: 22px;
 	padding: 6.5px 16px !important;
+	width: auto !important;
+	text-align: left !important;
 }
 .dropdown-content li>span>label {
 	top: 1px;
@@ -6141,6 +6143,7 @@ button.btn-floating {
 }
 .dropdown-content li>a>i {
 	height: inherit;
+	width: auto !important;
 	line-height: inherit
 }
 
