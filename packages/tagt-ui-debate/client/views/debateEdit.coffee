@@ -25,7 +25,8 @@ Template.debateEdit.helpers
 		return TAGT.settings.get('FileUpload_MediaTypeWhiteList')
 
 	cordova: ->
-		return Meteor.isCordova || md.mobile()
+		return false
+		# return Meteor.isCordova || md.mobile()
 
 
 Template.debateEdit.onRendered ->

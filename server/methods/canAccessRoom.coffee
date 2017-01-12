@@ -16,12 +16,9 @@ Meteor.methods
 
 		if room
 			if TAGT.authz.canAccessRoom.call(this, room, user)
-				console.log "yes"
 				room.username = user.username
 				return room
 			else
-				console.log "no"
 				return false
 		else
-			console.log "error"
 			throw new Meteor.Error 'error-invalid-room', 'Invalid room', { method: 'canAccessRoom' }
